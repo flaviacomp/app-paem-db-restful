@@ -1,9 +1,9 @@
+
+from util.seguranca import Seguranca
 import pandas as pd
-import mysql.connector
-from util.Seguranca import Seguranca
+from mysql import connector
 from datetime import date, datetime, timedelta
 import bcrypt
-
 class DefaultDB(object):
 
     l_cursos = []
@@ -17,10 +17,12 @@ class DefaultDB(object):
         self.user = user
         self.password = password
         self.path_sql_db = path_sql_db
-        if(database == None):
-            self.conn = mysql.connector.connect(user=self.user, password=self.password, host='127.0.0.1')
-        else:
-            self.conn = mysql.connector.connect(user=self.user, password=self.password, host='127.0.0.1', database = database)
+        # if(database == None):
+        #     self.conn = connector.connect(user=self.user, password=self.password, host='127.0.0.1')
+        # else:
+        #     self.conn = connector.connect(user=self.user, password=self.password, host='127.0.0.1', database = database)
+
+        self.create_database_from_sql()
 
     def insert_campus(self):
         cursor = self.conn.cursor()

@@ -16,5 +16,18 @@ class TecnicoModel(db.Model):
     curso_id_curso = db.Column(db.Integer, db.ForeignKey('curso.id_curso'), nullable=True)
     curso = db.relationship('CursoModel', backref=db.backref('tecnicos', lazy=True))
 
+    def __init__(self, siape, nome, data_nascimento, cargo,
+                        status_covid=None, status_afastamento=None, 
+                        usuario_id_usuario=None, curso_id_curso=None):
+                        
+        self.siape = siape
+        self.nome = nome
+        self.data_nascimento = data_nascimento
+        self.cargo = cargo
+        self.status_covid = status_covid
+        self.status_afastamento = status_afastamento
+        self.curso_id_curso = curso_id_curso
+
+    
     def __repr__(self):
         return '<tecnico %r>' % self.nome

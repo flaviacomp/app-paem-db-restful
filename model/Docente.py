@@ -26,6 +26,20 @@ class DocenteModel(db.Model):
 
     curso_id_curso = db.Column(db.Integer, db.ForeignKey('curso.id_curso'), nullable=True)
     
+    def __init__(self, siape, nome, data_nascimento, escolaridade, 
+                        status_covid=None, status_afastamento=None, 
+                        situacao=None, usuario_id_usuario=None, 
+                        curso_id_curso=None):
+
+        self.siape = siape
+        self.nome = nome
+        self.data_nascimento = data_nascimento
+        self.status_covid = status_covid
+        self.status_afastamento = status_afastamento
+        self.situacao = situacao
+        self.usuario_id_usuario
+        self.curso_id_curso = curso_id_curso
+
 
     def __repr__(self):
         return '<docente %r>' % self.id_direcao

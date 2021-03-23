@@ -20,8 +20,23 @@ class DiscenteModel(db.Model):
     curso_id_curso = db.Column(db.Integer, db.ForeignKey('curso.id_curso'), nullable=True)
     curso = db.relationship('CursoModel', backref=db.backref('discentes', lazy=True))
     
+    def __init__(self, matricula, nome, curso_id_curso, cpf=None, 
+                        entrada=None, semestre=None, endereco=None, 
+                        grupo_risco=None, status_covid=None, 
+                        status_permissao=None, usuario_id_usuario=None):
 
-    # TODO: Query columns
+        self.matricula = matricula
+        self.nome = nome
+        self.cpf = cpf
+        self.entrada = entrada
+        self.semestre = semestre
+        self.endereco = endereco
+        self.grupo_risco = grupo_risco
+        self.status_covid = status_covid
+        self.status_permissao = status_permissao
+        self.usuario_id_usuario = usuario_id_usuario
+        self.curso_id_curso = curso_id_curso
+
 
     def json(self):
         return {'id_discente': self.id_discente, 

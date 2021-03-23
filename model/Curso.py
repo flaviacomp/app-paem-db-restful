@@ -11,5 +11,12 @@ class CursoModel(db.Model):
     
     docentes = db.relationship('DocenteModel', backref=db.backref('curso', lazy=True))
     
+
+    def __init__(self, nome, data_fundacao, campus_id_campus, id_curso=None):
+        self.nome = nome
+        self.data_fundacao = data_fundacao
+        self.campus_id_campus = campus_id_campus
+        self.id_curso = id_curso
+
     def __repr__(self):
         return '<curso %r>' % self.nome

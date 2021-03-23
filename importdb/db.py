@@ -23,8 +23,8 @@ def create_db(app, server_user, server_pwd, server='localhost', db_name="mydbpae
     )
     mycursor = mydb.cursor()
 
-    # mycursor.execute(f"DROP DATABASE IF EXISTS {db_name}")
-    mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
+    mycursor.execute(f"DROP DATABASE IF EXISTS {db_name}")
+    mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;")
     # mycursor.execute(f"USE {db_name}")
     mydb.close()
     mycursor.close()

@@ -9,5 +9,12 @@ class UsuarioModel(db.Model):
     email = db.Column(db.String(45), nullable=False)
     tipo = db.Column(db.Integer, nullable=False)
 
+    
+    def __init__(self, login, senha, email, tipo):
+        self.login = login
+        self.senha = senha
+        self.email = email
+        self.tipo = tipo
+
     def __repr__(self):
         return '<usuario %r>' % self.login

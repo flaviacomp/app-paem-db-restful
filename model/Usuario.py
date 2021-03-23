@@ -31,6 +31,9 @@ class UsuarioModel(db.Model):
     def find_by_id(cls, id):
        return cls.query.filter_by(id_usuario=id).first_or_404()
 
+    @classmethod
+    def  query_all(cls):
+       return cls.query.all()
 
     def save_to_db(self):
         db.session.add(self)

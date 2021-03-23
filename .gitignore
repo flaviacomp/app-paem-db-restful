@@ -1,8 +1,9 @@
 # Default ignored files
 /workspace.xml
 
-# cache folders
+# vscode ideo folders
 importdb/__pycache__
 __pycache__/
 .vscode/
 .idea
+/model/__pycache__/

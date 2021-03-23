@@ -1,4 +1,5 @@
 from importdb.db import db
+from .SolicitacaoAcesso import SolicitacaoAcessoModel
 class AcessoPermitidoModel(db.Model):
     __tablename__ = "acesso_permitido"
 

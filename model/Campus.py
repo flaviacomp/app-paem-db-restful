@@ -1,5 +1,6 @@
 # Table structure for table `campus`
 from importdb.db import db
+from .Direcao import DirecaoModel
 class CampusModel(db.Model):
     __tablename__ = "campus"
 

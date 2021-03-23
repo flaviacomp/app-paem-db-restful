@@ -1,4 +1,6 @@
 from importdb.db import db
+from .Usuario import UsuarioModel
+from .Curso import CursoModel
 
 class DiscenteModel(db.Model):
     __tablename__='discente'
@@ -46,12 +48,31 @@ class DiscenteModel(db.Model):
                                 'entrada':self.entrada,
                                 'semestre':self.semestre,
                                 'endereco':self.endereco,
-                                'grupo_risco':self.grupo_risco,
-                                'status_covid':self.status_covid,
-                                'status_permissao':self.status_permissao,
-                                'usuario':self.usuario,
-                                'curso':self.curso}
+                                # 'grupo_risco':self.grupo_risco,
+                                # 'status_covid':self.status_covid,
+                                # 'status_permissao':self.status_permissao,
+                                'usuario_id_usuario':self.usuario_id_usuario,
+                                'curso_id_curso':self.curso_id_curso}
+    
+    @classmethod
+    def find_by_name(cls, name):
+       return cls.query.filter_by(nome=name).first_or_404()
 
+    @classmethod
+    def find_by_id(cls, id):
+       return cls.query.filter_by(id_discente=id).first_or_404()
+
+    @classmethod
+    def  query_all(cls):
+       return cls.query.all()
+       
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()
 
     def __repr__(self):
         return '<discente %r>' % self.login

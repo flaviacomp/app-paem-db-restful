@@ -1,5 +1,6 @@
 from importdb.db import db
-
+from .Curso import CursoModel
+from .Discente import DiscenteModel
 
 
 db.Table(

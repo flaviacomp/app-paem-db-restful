@@ -1,6 +1,8 @@
 from importdb.db import db
+from .Disciplina import DisciplinaModel
+from .Usuario import UsuarioModel
 
-# many to many
+# table to relationship many to many
 db.Table('docente_has_disciplina', db.Column('docente_siape', db.String(45), db.ForeignKey('docente.siape'), primary_key=True),
                                     db.Column('disciplina_id_disciplina', db.Integer, db.ForeignKey('disciplina.id_disciplina'), primary_key=True),
                                     db.Column('data', db.Date, nullable=False)

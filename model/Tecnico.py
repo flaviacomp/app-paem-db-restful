@@ -1,4 +1,7 @@
 from importdb.db import db
+from .Usuario import UsuarioModel
+from .Curso import CursoModel
+
 class TecnicoModel(db.Model):
     __tablename__ = "tecnico"
 

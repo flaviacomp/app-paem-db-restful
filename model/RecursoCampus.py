@@ -1,4 +1,5 @@
 from importdb.db import db
+from .Campus import CampusModel
 class RecursoCampusModel(db.Model):
     __tablename__ = "recurso_campus"
 
@@ -12,13 +13,27 @@ class RecursoCampusModel(db.Model):
     campus_id_campus = db.Column(db.Integer, db.ForeignKey('campus.id_campus'), nullable=False)
     campus = db.relationship('CampusModel', backref=db.backref('recursos_campus', lazy=True))
 
+    def json(self):
+        return {'id_recuso_campus': self.id_recurso_campus, 
+                                'nome': self.nome,
+                                'capacidade': self.capacidade,
+                                'descricao':self.descricao,
+                                'inicio_horario_funcionamento':self.inicio_horario_funcionamento,
+                                'fim_horario_funcionamento':self.fim_horario_funcionamento,
+                                'campus_id_campus':self.campus_id_campus}
+                               
+                                
     @classmethod
     def find_by_name(cls, name):
        return cls.query.filter_by(nome=name).first_or_404()
 
     @classmethod
     def find_by_id(cls, id):
-       return cls.query.filter_by(nome=name).first_or_404()
+       return cls.query.filter_by(id_recurso_campus=id).first_or_404()
+
+    @classmethod
+    def  query_all(cls):
+       return cls.query.all()
 
     def save_to_db(self):
         db.session.add(self)

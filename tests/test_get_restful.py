@@ -44,4 +44,4 @@ api.add_resource(HelloWorld, '/', '/hello')
 api.add_resource(TodoSimple, '/todo/<string:todo_id>', endpoint="todo_ep")
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0' )

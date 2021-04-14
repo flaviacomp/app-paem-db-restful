@@ -1,18 +1,18 @@
 
 # import models to create tables
-from model.Usuario import UsuarioModel
-from model.Curso import CursoModel
-from model.Campus import CampusModel
-from model.Docente import DocenteModel
-from model.Direcao import DirecaoModel
-from model.Coordenacao import CoordenacaoModel
-from model.RecursoCampus import RecursoCampusModel
-from model.SolicitacaoAcesso import SolicitacaoAcessoModel
-from model.AcessoPermitido import AcessoPermitidoModel
-from model.Discente import DiscenteModel
-from model.Disciplina import DisciplinaModel
-from model.Portaria import PortariaModel
-from model.Tecnico import TecnicoModel
+from model.usuario import UsuarioModel
+from model.curso import CursoModel
+from model.campus import CampusModel
+from model.docente import DocenteModel
+from model.direcao import DirecaoModel
+from model.coordenacao import CoordenacaoModel
+from model.recurso_campus import RecursoCampusModel
+from model.solicitacao_acesso import SolicitacaoAcessoModel
+from model.acesso_permitido import AcessoPermitidoModel
+from model.discente import DiscenteModel
+from model.disciplina import DisciplinaModel
+from model.portaria import PortariaModel
+from model.tecnico import TecnicoModel
 # libs
 from datetime import time, date
 from pandas import DataFrame, read_csv, datetime
@@ -94,5 +94,13 @@ if __name__=='__main__':
     from importdb.db import create_db, db
     from flask import Flask
     app = Flask(__name__)
-    create_db(app, 'root', '70x7=sempre')
+
+    hostname = input('\nHost name. Default is localhost: ')
+    username = input('\nUsername: ')
+    password = input('\nPassword: ')
+    
+    if hostname == '':
+        hostname = 'localhost'
+
+    create_db(app, username, password, hostname)
     import_csv_db(db)

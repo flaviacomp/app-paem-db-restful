@@ -1,6 +1,5 @@
 from importdb.db import db
-from .Usuario import UsuarioModel
-from .Curso import CursoModel
+from .usuario import UsuarioModel
 
 class DiscenteModel(db.Model):
     __tablename__='discente'
@@ -20,7 +19,6 @@ class DiscenteModel(db.Model):
     usuario = db.relationship('UsuarioModel', uselist=False, backref=db.backref('discente', lazy=True))
 
     curso_id_curso = db.Column(db.Integer, db.ForeignKey('curso.id_curso'), nullable=True)
-    curso = db.relationship('CursoModel', backref=db.backref('discentes', lazy=True))
     
     def __init__(self, matricula, nome, curso_id_curso, cpf=None, 
                         entrada=None, semestre=None, endereco=None, 

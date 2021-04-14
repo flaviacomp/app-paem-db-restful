@@ -1,9 +1,10 @@
 # Table structure for table `solicita_acesso`
 
 from importdb.db import db
-from .Usuario import UsuarioModel
-from .Discente import DiscenteModel
-from .RecursoCampus import RecursoCampusModel
+from .usuario import UsuarioModel
+from .discente import DiscenteModel
+from .recurso_campus import RecursoCampusModel
+
 
 class SolicitacaoAcessoModel(db.Model):
     __tablename__= "solicitacao_acesso"

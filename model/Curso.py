@@ -1,6 +1,9 @@
 from importdb.db import db
-from .Campus import CampusModel
-from .Docente import DocenteModel
+from .campus import CampusModel
+from .disciplina import DisciplinaModel
+from .discente import DiscenteModel
+from .docente import DocenteModel
+
 
 class CursoModel(db.Model):
     __tablename__='curso'
@@ -14,6 +17,9 @@ class CursoModel(db.Model):
     
     docentes = db.relationship('DocenteModel', backref=db.backref('curso', lazy=True))
     
+    disciplinas = db.relationship('DisciplinaModel', backref=db.backref('curso', lazy=True))
+
+    discentes = db.relationship('DiscenteModel', backref=db.backref('curso', lazy=True))
 
     def __init__(self, nome, data_fundacao, campus_id_campus, id_curso=None):
         self.nome = nome

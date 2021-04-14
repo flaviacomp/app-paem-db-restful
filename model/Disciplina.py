@@ -1,6 +1,5 @@
 from importdb.db import db
-from .Curso import CursoModel
-from .Discente import DiscenteModel
+from .discente import DiscenteModel
 
 
 db.Table(
@@ -18,7 +17,6 @@ class DisciplinaModel(db.Model):
     semestre = db.Column(db.Integer, nullable=True)
 
     curso_id_curso = db.Column(db.Integer, db.ForeignKey('curso.id_curso'), nullable=True)
-    curso = db.relationship('CursoModel', backref=db.backref('disciplinas', lazy=True))
 
     discentes = db.relationship('DiscenteModel', secondary='disciplina_has_discente',  backref=db.backref('disciplinas', lazy=True))
 

@@ -1,5 +1,7 @@
 from importdb.db import db
-from .Campus import CampusModel
+from .campus import CampusModel
+
+
 class RecursoCampusModel(db.Model):
     __tablename__ = "recurso_campus"
 

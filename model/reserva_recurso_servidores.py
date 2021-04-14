@@ -1,7 +1,9 @@
 # Table structure for table `solicita_acesso`
 
 from importdb.db import db
-from .Usuario import UsuarioModel
+from .usuario import UsuarioModel
+
+
 class ReservaRecursoCampusModel(db.Model):
     __tablename__= "reserva_recurso_servidores"
 

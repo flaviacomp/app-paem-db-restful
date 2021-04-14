@@ -1,6 +1,8 @@
 from importdb.db import db
-from .Usuario import UsuarioModel
-from .Curso import CursoModel
+from .usuario import UsuarioModel
+from .curso import CursoModel
+
+
 class PortariaModel(db.Model):
     __tablename__ = "portaria"
 

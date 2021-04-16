@@ -6,6 +6,14 @@ from mysql import connector
 # get AQLAlchemy
 db = SQLAlchemy()
 
+def connnect_db(username, password, hostname, db_name, app):
+    str_connection = f"mysql://{username}:{password}@{hostname}/{db_name}"
+    app.config['SQLALCHEMY_DATABASE_URI'] = str_connection
+    app.config['SQLALCHEMY_ECHO'] = True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db.init_app(app)
+    return db
+
 def create_db(app, server_user, server_pwd, server='localhost', db_name="mydbpaem"):
     '''
     Cria o banco de dados padrão para testes

@@ -15,23 +15,17 @@ from model.portaria import PortariaModel
 from model.tecnico import TecnicoModel
 # libs
 from datetime import time, date
-from pandas import DataFrame, read_csv, datetime
+from pandas import DataFrame, read_csv
 
 def import_csv_db(db):
 
-    # dateparser_campus = lambda x: datetime.strptime(x, "%d-%m-%y")
-    # dateparser_curso = lambda x: datetime.strptime(x, "%d-%m-%y")
-    # dateparser_docente = lambda x: datetime.strptime(x, "%d-%m-%y")
-    # dateparser_tecnico = lambda x: datetime.strptime(x, "%d-%m-%y")
-    # timeparser = lambda x: datetime.strptime(x, "%H:%M:%S")
-
-    campus_dicts = read_csv('importdb\\inputs\\campus.csv', parse_dates=["ano_fundacao"], na_filter=False, sep=';', encoding='utf-8').to_dict(orient='records')
-    curso_dicts = read_csv('importdb\\inputs\\curso.csv', parse_dates=["data_fundacao"], na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
-    discente_dicts = read_csv('importdb\\inputs\\discente.csv', na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
-    docente_dicts = read_csv('importdb\\inputs\\docentes.csv', parse_dates=["data_nascimento"], na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
-    recurso_campus_dicts = read_csv('importdb\\inputs\\recurso_campus.csv', parse_dates=["inicio_horario_funcionamento", "fim_horario_funcionamento"], na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
-    tecnico_dicts = read_csv('importdb\\inputs\\tecnico.csv', parse_dates=["data_nascimento"], na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
-    usuario_dicts = read_csv('importdb\\inputs\\usuario.csv', na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
+    campus_dicts = read_csv('database\\inputs\\campus.csv', parse_dates=["ano_fundacao"], na_filter=False, sep=';', encoding='utf-8').to_dict(orient='records')
+    curso_dicts = read_csv('database\\inputs\\curso.csv', parse_dates=["data_fundacao"], na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
+    discente_dicts = read_csv('database\\inputs\\discente.csv', na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
+    docente_dicts = read_csv('database\\inputs\\docentes.csv', parse_dates=["data_nascimento"], na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
+    recurso_campus_dicts = read_csv('database\\inputs\\recurso_campus.csv', parse_dates=["inicio_horario_funcionamento", "fim_horario_funcionamento"], na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
+    tecnico_dicts = read_csv('database\\inputs\\tecnico.csv', parse_dates=["data_nascimento"], na_filter=False, sep=';', encoding='ISO-8859-1').to_dict(orient='records')
+    usuario_dicts = read_csv('database\\inputs\\usuario.csv', na_filter=False, sep=';', encoding='utf-8').to_dict(orient='records')
 
     
     # import usuario
@@ -91,13 +85,15 @@ def import_csv_db(db):
     db.session.commit()
 
 if __name__=='__main__':
-    from importdb.db import create_db, db
+    from getpass import getpass
+    from database.db import create_db, db
     from flask import Flask
+
     app = Flask(__name__)
 
     hostname = input('\nHost name. Default is localhost: ')
     username = input('\nUsername: ')
-    password = input('\nPassword: ')
+    password = getpass('\nPassword: ')
     
     if hostname == '':
         hostname = 'localhost'

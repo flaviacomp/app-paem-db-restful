@@ -1,4 +1,4 @@
-from importdb.db import db
+from database.db import db
 from .disciplina import DisciplinaModel
 from .usuario import UsuarioModel
 

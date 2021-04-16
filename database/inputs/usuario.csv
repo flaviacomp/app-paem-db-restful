@@ -1,5 +1,5 @@
 login;senha;email;tipo
-admin;adim;admin@teste.com;0
+admin;admim;admin@teste.com;0
 teste_tecnico;teste;tecnico@teste.com;1
 teste_docente;teste;docente@teste.com;1
 teste_discente_1;teste;discente1@teste.com;1

@@ -1,5 +1,5 @@
-from importdb.db import db
-from bcrypt import hashpw, checkpw, gensalt
+from database.db import db
+from passlib.apps import custom_app_context as pwd_context
 
 
 class UsuarioModel(db.Model):
@@ -19,16 +19,13 @@ class UsuarioModel(db.Model):
         self.senha = senha
 
     @property
-    def senha(self, password):
+    def senha(self):
         return self._senha
 
     @senha.setter
     def senha(self, password):
-        self._senha = hashpw(password.encode('utf-8'), gensalt())
+        self._senha = pwd_context.hash(password)
     
-    def verify_passord(self, password):
-        return checkpw(password, self._senha)
-
     def serialize(self):
         return {'id_usuario': self.id_usuario, 
                 'login': self.login,

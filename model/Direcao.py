@@ -1,4 +1,4 @@
-from importdb.db import db
+from database.db import db
 from .docente import DocenteModel
 
 

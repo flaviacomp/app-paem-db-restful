@@ -1,6 +1,5 @@
 # Table structure for table `solicita_acesso`
-
-from importdb.db import db
+from database.db import db
 from .usuario import UsuarioModel
 from .discente import DiscenteModel
 from .recurso_campus import RecursoCampusModel

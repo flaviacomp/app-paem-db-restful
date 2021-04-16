@@ -1,5 +1,5 @@
 # Table structure for table `campus`
-from importdb.db import db
+from database.db import db
 from .direcao import DirecaoModel
 
 

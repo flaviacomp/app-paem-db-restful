@@ -13,7 +13,8 @@ class RecrsAcessoPermitido(Resource):
     END_POINT = 'acesso_permitido'
     URL = '/acessos_permitidos/acesso_permitido'
 
-    def get(self):
+    @token_required
+    def get(self, current_user):
         
         try:
             id = request.json['id']
@@ -21,17 +22,28 @@ class RecrsAcessoPermitido(Resource):
 
             return {'message':'arquivo json não enviado'}, BAD_REQUEST
 
-        solicitacaoAcesso = AcessoPermitidoModel.find_by_id(id)
+        acessoPermitido = AcessoPermitidoModel.find_by_id(id)
+
+        if not acessoPermitido:
+            return {'message':'esta solicitacao_acesso não existe'}, NOT_FOUND_REQUEST
         
-        return solicitacaoAcesso.serialize(), OK
+        return acessoPermitido.serialize(), OK
     
-    def post(self):
+    @token_required
+    def post(self, current_user):
         
         acesso_permitido_dict = request.json
         
         if not acesso_permitido_dict:
             return {'message':'arquivo json não enviado'}, BAD_REQUEST
+        
+        # TODO: Verify if acesso_permitido already was posted
+        acessoPermitido = AcessoPermitidoModel.find_by_id(acesso_permitido_dict['id_acesso_permitido'])
+        if acessoPermitido:
+            return {'message':'esta acesso_permitido já foi reslizado.'}, BAD_REQUEST 
 
+
+        # FIXME: Remove this validations data and add property in AcessoPermitidoModel
         hour_ent, minute_ent, second_ent = acesso_permitido_dict['hora_entrada'].split(':')
         acesso_permitido_dict['hora_entrada'] = time(hour=int(hour_ent), minute=int(minute_ent), second=int(second_ent))
 
@@ -43,7 +55,8 @@ class RecrsAcessoPermitido(Resource):
 
         return {'message':'acesso permitido foi criado.'}, CREATED
     
-    def delete(self):
+    @token_required
+    def delete(self, current_user):
         
         try:
             id = request.json['id']
@@ -52,6 +65,10 @@ class RecrsAcessoPermitido(Resource):
             return {'message':'arquivo json não enviado'}, BAD_REQUEST
 
         acessoPermitido = AcessoPermitidoModel.find_by_id(id)
+
+        if not acessoPermitido:
+            return {'message':'esta acesso_permitido não existe'}, NOT_FOUND_REQUEST
+
         AcessoPermitidoModel.delete_from_db(acessoPermitido)
 
         return {'message':f'acesso permitido com id {acessoPermitido.id_acesso_permitido} excluído'}, OK
@@ -61,7 +78,8 @@ class RecrsListaAcessoPermitido(Resource):
     END_POINT = 'acessos_permitidos'
     URL = '/acessos_permitidos'
     
-    def get(self):
+    @token_required
+    def get(self, current_user):
         return [acessoPermitido.serialize() for acessoPermitido in AcessoPermitidoModel.query_all()]
 
 

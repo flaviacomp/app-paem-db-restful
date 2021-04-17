@@ -38,7 +38,7 @@ class RecrsUsuario(Resource):
 
         token = jwt.encode(payload, app.secret_key, algorithm='HS256')
 
-        return {'token':token}, 
+        return {'token':token}
 
 class RecrsListaUsuario(Resource):
 

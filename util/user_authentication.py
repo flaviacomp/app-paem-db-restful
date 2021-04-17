@@ -25,8 +25,6 @@ def token_required(f):
 
         if not Bearer_token:
             return {'message':'acesso não autorizado.'}, UNAUTHORIZED_REQUEST
-        
-        print("Bearer Token: ", Bearer_token)
 
         if not ("Bearer" in Bearer_token):
             return {'message':'Token invalido'}, BAD_REQUEST
@@ -34,9 +32,9 @@ def token_required(f):
         try:
 
             token = Bearer_token.split()[1]
-            print('Token:', token)
+     
             data = jwt.decode(token, key=current_app.secret_key, algorithms='HS256')
-            print(data)
+
             id_usuario = data['id']
             current_user = UsuarioModel.find_by_id(id_usuario)
 

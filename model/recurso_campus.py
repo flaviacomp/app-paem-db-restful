@@ -15,13 +15,13 @@ class RecursoCampusModel(db.Model):
     campus_id_campus = db.Column(db.Integer, db.ForeignKey('campus.id_campus'), nullable=False)
     campus = db.relationship('CampusModel', backref=db.backref('recursos_campus', lazy=True))
 
-    def json(self):
+    def serialize(self):
         return {'id_recuso_campus': self.id_recurso_campus, 
                                 'nome': self.nome,
                                 'capacidade': self.capacidade,
                                 'descricao':self.descricao,
-                                'inicio_horario_funcionamento':self.inicio_horario_funcionamento,
-                                'fim_horario_funcionamento':self.fim_horario_funcionamento,
+                                'inicio_horario_funcionamento':str(self.inicio_horario_funcionamento),
+                                'fim_horario_funcionamento':str(self.fim_horario_funcionamento),
                                 'campus_id_campus':self.campus_id_campus}
                                
                                 

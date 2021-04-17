@@ -33,5 +33,6 @@ class TecnicoModel(db.Model):
         self.curso_id_curso = curso_id_curso
 
     
+    
     def __repr__(self):
         return '<tecnico %r>' % self.nome

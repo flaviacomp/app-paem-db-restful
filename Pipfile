@@ -15,6 +15,7 @@ pylint = "*"
 mysqlclient = "2.0.1"
 pyjwt = "*"
 passlib = "*"
+httplib2 = "*"
 
 [dev-packages]
 

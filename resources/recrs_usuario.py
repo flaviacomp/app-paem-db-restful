@@ -4,8 +4,8 @@ from datetime import datetime, timedelta
 from flask_restful import Resource, request, output_json
 import jwt
 
-from app.user_authentication import verify_password, token_required
-from app.http_codes import BAD_REQUEST, FORBIDDEN_REQUEST, NOT_FOUND_REQUEST, OK
+from util.user_authentication import verify_password, token_required
+from util.http_codes import BAD_REQUEST, FORBIDDEN_REQUEST, NOT_FOUND_REQUEST, OK
 
 from app import app
 from model.usuario import UsuarioModel

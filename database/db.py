@@ -32,13 +32,13 @@ def create_db(app, server_user, server_pwd, server='localhost', db_name="mydbpae
     mycursor = mydb.cursor()
 
     mycursor.execute(f"DROP DATABASE IF EXISTS {db_name}")
-    mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;")
+    mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name} CHARSET = utf8mb4;")
     # mycursor.execute(f"USE {db_name}")
     mydb.close()
     mycursor.close()
 
     # Configure to use our database.
-    str_connection = f"mysql://{server_user}:{server_pwd}@{server}/{db_name}"
+    str_connection = f"mysql://{server_user}:{server_pwd}@{server}/{db_name}?charset=utf8mb4"
     app.config['SQLALCHEMY_DATABASE_URI'] = str_connection
     app.config['SQLALCHEMY_ECHO'] = True
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

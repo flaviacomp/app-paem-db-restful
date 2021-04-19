@@ -99,9 +99,9 @@ You should **ALWAYS** commit using just the command `git commit`.
 Considering usage in devoloping enviroment, you firt need to create a database run the script [create and import database](/create_import_db.py) 
 by run `python create_import_db.py`. That create a database structure and import some data
 test from csv files that there're into this repository. Then run the webserice by the command `python main_app.py` into this repository. 
-Is the file [main app](/main.py). Thus, it's ready to make request to the server. By default the route server **http://localhost/:5000** 
+Is the file [main app](/main.py). Thus, it's ready to make request to the server. By default the route server **http://localhost:5000** 
 
-Some exemples of consuming this *webservice* is [here](\exemple) 
+Some exemples of consuming this *webservice* is [here](/exemple) 
 
 ## Documentação
 

@@ -38,33 +38,39 @@ If the Python are not installed or the version is incorrect, you need to make an
 
 6. Click __install Now__ option. Thus, Python will be installed correctly.
 
+#### Pip
 You will need Pip installed in the Python environment. If you followed the Python installation process described in this document, the Pip installation won't be necessary, so is **highly** recommended to follow the process described here even if you already have Python installed natively on Ubuntu.
 
 To check if Pip is correctly installed, open the terminal and type one of the following commands:
 
 ```
-\> pip --version
-\> pip3 --version
-\> python -m pip --version
+> pip --version
+> pip3 --version
+> python -m pip --version
 ```
 
-If pip was not installed you need to install.
+**Disclaimer**: If pip was not installed you need to install.
+
 #### Pipenv
 
 If you installed Python 3.8 according to this document, you can install Pipenv using:
 
-```bash
-\> sudo python -m pip install pipenv
-\>pip install pipenv
+```
+> python -m pip install pipenv
+or
+> pip install pipenv
 ```
 
 To check if the installation was successful use:
 
 ```
-\> sudo python3.8 -m pipenv --version
+> python -m pipenv --version
+or
+> pipenv --version
 ```
+Thus you can init the virtual enviroment into the repository typing `pipenv shell`. For [leanig other commands](https://github.com/pypa/pipenv).
 
-####Python libraries
+#### Python libraries
 
 To install the Python requirements open the command line in repository root and type the command `pip install -r \requirementes.txt`.
 
@@ -75,7 +81,7 @@ To clone the repository follow the steps below:
 1. Install the Git in your computer.
 2. Click right mouse button.
 3. Select `Git Bash here` option.
-3. Clone repository typing `git clone https://github.com/Alfser/IEOMethodology.git`. Then now, start to code!
+3. Clone repository typing `git clone https://github.com/flaviacomp/app-paem-db-restful.git`. Then now, start to code!
 
 ## Usage
 

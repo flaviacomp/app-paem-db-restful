@@ -72,7 +72,7 @@ Thus you can init the virtual enviroment into the repository typing `pipenv shel
 
 #### Python libraries
 
-To install the Python requirements open the command line in repository root and type the command `pip install -r \requirementes.txt`.
+To install the Python requirements open the command line in repository root and type the command `pip install -r \requirementes.txt` into the root repository.
 
 ## Clone
 

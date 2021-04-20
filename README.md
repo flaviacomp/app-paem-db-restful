@@ -84,6 +84,8 @@ To clone the repository follow the steps below:
 3. Clone repository typing `git clone https://github.com/flaviacomp/app-paem-db-restful.git`. Then now, start to code!
 
 ## Usage
+#### Python Libraries
+Before using the webservice you need to install the python requirements by the command `pip install -r requirements.txt`
 
 #### Developer
 The use of this repository is the same as the other Git repositories. Only a few differences need to be pointed out.

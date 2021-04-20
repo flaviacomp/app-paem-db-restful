@@ -43,7 +43,7 @@ class RecrsUsuario(Resource):
 class RecrsListaUsuario(Resource):
 
     END_POINT = 'users'
-    URL = '/auth/users'
+    URL = '/users'
 
     @token_required
     def get(self, current_user):

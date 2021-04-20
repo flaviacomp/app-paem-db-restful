@@ -115,6 +115,7 @@ Endpoints available:
 
 ###### Exemples
 You can access the webservice routes by adding the server adress and the route that you need to access.
+
 e.g : `http://localhost:5000/http:/users` access the users resource into webservice.
 
 Some exemples of consuming this *webservice* is found [here](/exemple) 

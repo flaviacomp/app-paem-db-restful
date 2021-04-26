@@ -68,7 +68,7 @@ To check if the installation was successful use:
 or
 > pipenv --version
 ```
-Thus you can init the virtual enviroment into the repository typing `pipenv shell`. For [leanig other commands](https://github.com/pypa/pipenv).
+Thus you can init the virtual enviroment into the repository typing `pipenv shell`. So [leanig other commands](https://github.com/pypa/pipenv).
 
 #### Python libraries
 
@@ -116,7 +116,7 @@ Endpoints available:
 ###### Exemples
 You can access the webservice routes by adding the server adress and the route that you need to access.
 
-e.g : `http://localhost:5000/http:/users` access the users resource into webservice.
+e.g : `http://localhost:5000/users` access the users resource into webservice.
 
 Some exemples of consuming this *webservice* is found [here](/exemple) 
 

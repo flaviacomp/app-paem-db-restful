@@ -83,7 +83,7 @@ class RecrsSolicitacaoAcesso(Resource):
             id_solicitacao_acesso = args.get('id_solicitacao_acesso')
         except:
 
-            return {'message':'arquivo json não enviado'}, BAD_REQUEST
+            return {'message':'id_solicitacao_acesso está vazio.'}, BAD_REQUEST
 
         solicitacaoAcesso = SolicitacaoAcessoModel.find_by_id(id_solicitacao_acesso)
 

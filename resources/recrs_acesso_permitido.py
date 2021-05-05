@@ -2,7 +2,7 @@ from model.acesso_permitido import AcessoPermitidoModel
 
 from datetime import date, time
 
-from flask_restful import Resource, request
+from flask_restful import Resource, reqparse, request
 
 from util.user_authentication import token_required
 from util.http_codes import NOT_FOUND_REQUEST, BAD_REQUEST, CREATED, OK
@@ -11,13 +11,22 @@ from util.http_codes import NOT_FOUND_REQUEST, BAD_REQUEST, CREATED, OK
 class RecrsAcessoPermitido(Resource):
     
     ENDPOINT = 'acesso_permitido'
-    ROUTE = '/acessos_permitidos/acesso_permitido/<int:id_acesso_permitido>'
+    ROUTE = '/acessos_permitidos/acesso_permitido'
 
+    def __init__(self):
+
+        self.__parser = reqparse.RequestParser()
+        self.__parser.add_argument("id_acesso_permitido")
+        
     @token_required
-    def get(self, current_user, id_acesso_permitido):
+    def get(self, current_user):
+
+        args = self.__parser.parse_args()
+
+        id_acesso_permitido = args.get("id_acesso_permitido")
 
         if not id_acesso_permitido:
-            return {'message':'arquivo json não enviado'}, BAD_REQUEST
+            return {'message':'id_acesso_permitido está vazio.'}, BAD_REQUEST
 
         acessoPermitido = AcessoPermitidoModel.find_by_id(id_acesso_permitido)
 
@@ -55,13 +64,14 @@ class RecrsAcessoPermitido(Resource):
     @token_required
     def delete(self, current_user):
         
-        try:
-            id = request.json['id']
-        except:
+        args = self.__parser.parse_args()
 
-            return {'message':'arquivo json não enviado'}, BAD_REQUEST
+        id_acesso_permitido = args.get("id_acesso_permitido")
+    
+        if not id_acesso_permitido:
+           return {'message':'id_acesso_permitido está vazio.'}, BAD_REQUEST
 
-        acessoPermitido = AcessoPermitidoModel.find_by_id(id)
+        acessoPermitido = AcessoPermitidoModel.find_by_id(id_acesso_permitido)
 
         if not acessoPermitido:
             return {'message':'esta acesso_permitido não existe'}, NOT_FOUND_REQUEST

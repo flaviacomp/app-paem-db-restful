@@ -1,12 +1,29 @@
 # resource usuario
-from flask_restful import Resource
-from model.Discente import DiscenteModel
-class Discente(Resource):
-    def get(self, id_discente):
-      mydiscente = DiscenteModel.find_by_id(id_discente)
-      return mydiscente.json()
+from flask_restful import Resource, reqparse
+from model.discente import DiscenteModel
+from model.curso import CursoModel
+
+class RecrsDiscente(Resource):
     
-class ListaDiscente(Resource):
+    ENDPOINT = 'discente'
+    ROUTE = '/discentes/discente'
+
+
+    def __init__(self):
+        # args
+        self.__parser = reqparse.RequestParser()
+        self.__parser.add_argument('matricula', type=str, required=True, help="Para acessar o recurso, precisa enviar a matícula.")
+
+    def get(self):
+      args = self.__parser.parse_args()
+      matricula = args.get('matricula')
+      discente = DiscenteModel.find_by_matricula(matricula)
+      return discente.serialize()
+    
+class RecrsListaDiscente(Resource):
+      ENDPOINT = 'discentes'
+      ROUTE = '/discentes'
+
       def get(self):
-        mydiscentes = DiscenteModel.query_all()
-        return [discente.json() for discente in mydiscentes]
+        discentes = DiscenteModel.query_all()
+        return [discente.serialize() for discente in discentes]

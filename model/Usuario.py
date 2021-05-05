@@ -35,11 +35,11 @@ class UsuarioModel(db.Model):
 
     @classmethod
     def find_by_login(cls, login):
-       return cls.query.filter_by(login=login).first_or_404()
+       return cls.query.filter_by(login=login).first_or_404("Esse usuário não existe.")
 
     @classmethod
     def find_by_id(cls, id):
-       return cls.query.filter_by(id_usuario=id).first_or_404()
+       return cls.query.filter_by(id_usuario=id).first_or_404("Usuário não encontrado.")
 
     @classmethod
     def  query_all(cls):

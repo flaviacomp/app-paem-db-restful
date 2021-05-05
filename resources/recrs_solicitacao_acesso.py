@@ -2,7 +2,7 @@
 from datetime import date, time
 from model.solicitacao_acesso import SolicitacaoAcessoModel
 
-from flask_restful import Resource, request
+from flask_restful import Resource, reqparse, request
 
 from util.user_authentication import token_required
 from util.http_codes import NOT_FOUND_REQUEST, BAD_REQUEST, FORBIDDEN_REQUEST, CREATED, OK
@@ -10,19 +10,26 @@ from util.http_codes import NOT_FOUND_REQUEST, BAD_REQUEST, FORBIDDEN_REQUEST, C
 
 class RecrsSolicitacaoAcesso(Resource):
     
-    END_POINT = 'solicitacao_acesso'
-    URL = '/solicitacoes_acessos/solicitacao_acesso'
+    ENDPOINT = 'solicitacao_acesso'
+    ROUTE = '/solicitacoes_acessos/solicitacao_acesso'
+
+    def __init__(self):
+        self.__parser = reqparse.RequestParser()
+        self.__parser.add_argument("id_usuario", type=int, required=True, help="Precisa do argumento id_usuario na solicitação para acessar a solicitação do mesmo.")
+        self.__parser.add_argument("id_solicitacao_acesso", type=int, required=True, help="Precisa do argumento id_solicitação_acesso na solicitação para acessar a solicitação do mesmo.")
 
     @token_required
     def get(self, current_user):
         
-        id = request.json['id']
-        if not id:
-            return {'message':'arquivo json não enviado'}, BAD_REQUEST
+        args = self.__parser.parse_args(strict=True)
+        id_usuario = args.get("id_usuario")
 
-        solicitacaoAcesso = SolicitacaoAcessoModel.find_by_id(id)
+        if not id_usuario:
+            return {'message':'argumento id_usuario vazio.'}, BAD_REQUEST
+
+        solicitacaoAcesso = SolicitacaoAcessoModel.find_by_id_usuario(id_usuario)
         if not solicitacaoAcesso:
-            return {'message':'esta solicitação não existe'}, NOT_FOUND_REQUEST
+            return {'message':'solicitação para este uduário não existe'}, NOT_FOUND_REQUEST
 
         return solicitacaoAcesso.serialize(), OK
     
@@ -72,12 +79,13 @@ class RecrsSolicitacaoAcesso(Resource):
     def delete(self, current_user):
         
         try:
-            id = request.json['id']
+            args = self.__parser.parse_args()
+            id_solicitacao_acesso = args.get('id_solicitacao_acesso')
         except:
 
             return {'message':'arquivo json não enviado'}, BAD_REQUEST
 
-        solicitacaoAcesso = SolicitacaoAcessoModel.find_by_id(id)
+        solicitacaoAcesso = SolicitacaoAcessoModel.find_by_id(id_solicitacao_acesso)
 
         if not solicitacaoAcesso:
             return {'message':'esta solicitacao_acesso não existe'}, NOT_FOUND_REQUEST
@@ -88,8 +96,8 @@ class RecrsSolicitacaoAcesso(Resource):
 
 class RecrsListaSolicitacaoAcesso(Resource):
     
-    END_POINT = 'solicitacoes_acessos'
-    URL = '/solicitacoes_acessos'
+    ENDPOINT = 'solicitacoes_acessos'
+    ROUTE = '/solicitacoes_acessos'
     
     @token_required
     def get(self, current_user):

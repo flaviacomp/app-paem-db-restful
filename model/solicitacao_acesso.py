@@ -38,9 +38,10 @@ class SolicitacaoAcessoModel(db.Model):
             'nome':self.nome,
             'fone':self.fone,
             'id_recurso_campus':self.id_recurso_campus,
-            'discente_id_discente':self.discente_id_discente
-            # 'recurso_campus':self.recurso_campus.serialize(),
-            # 'discente':self.discente.serialize()
+            'matricula':self.discente.serialize()['matricula'],
+            'nome_discente':self.discente.serialize()['nome'],
+            'discente_id_discente':self.discente_id_discente,
+            'recurso_campus':self.recurso_campus.serialize()
         }
 
     @classmethod
@@ -50,6 +51,10 @@ class SolicitacaoAcessoModel(db.Model):
     @classmethod
     def find_by_id(cls, id):
        return cls.query.filter_by(id_solicitacao_acesso=id).first()
+
+    @classmethod
+    def find_by_id_usuario(cls, id_usuario):
+       return cls.query.filter_by(usuario_id_usuario=id_usuario).first_or_404()
 
     @classmethod
     def  query_all(cls):

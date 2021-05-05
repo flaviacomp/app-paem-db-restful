@@ -47,11 +47,11 @@ class DiscenteModel(db.Model):
             'entrada':self.entrada,
             'semestre':self.semestre,
             'endereco':self.endereco,
-            # 'grupo_risco':self.grupo_risco,
+            'grupo_risco':self.grupo_risco,
             'status_covid':self.status_covid,
             'status_permissao':self.status_permissao,
-            # 'usuario_id_usuario':self.usuario_id_usuario,
-            # 'curso_id_curso':self.curso_id_curso
+            'usuario_id_usuario':self.usuario_id_usuario,
+            'curso':self.curso.serialize().get('nome')
         }
     
     @classmethod
@@ -61,6 +61,10 @@ class DiscenteModel(db.Model):
     @classmethod
     def find_by_id(cls, id):
        return cls.query.filter_by(id_discente=id).first_or_404()
+    
+    @classmethod
+    def find_by_matricula(cls, matricula):
+       return cls.query.filter_by(matricula=matricula).first_or_404("matrícula inválida")
 
     @classmethod
     def  query_all(cls):

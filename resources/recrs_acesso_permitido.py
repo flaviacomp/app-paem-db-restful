@@ -10,19 +10,16 @@ from util.http_codes import NOT_FOUND_REQUEST, BAD_REQUEST, CREATED, OK
 
 class RecrsAcessoPermitido(Resource):
     
-    END_POINT = 'acesso_permitido'
-    URL = '/acessos_permitidos/acesso_permitido'
+    ENDPOINT = 'acesso_permitido'
+    ROUTE = '/acessos_permitidos/acesso_permitido/<int:id_acesso_permitido>'
 
     @token_required
-    def get(self, current_user):
-        
-        try:
-            id = request.json['id']
-        except:
+    def get(self, current_user, id_acesso_permitido):
 
+        if not id_acesso_permitido:
             return {'message':'arquivo json não enviado'}, BAD_REQUEST
 
-        acessoPermitido = AcessoPermitidoModel.find_by_id(id)
+        acessoPermitido = AcessoPermitidoModel.find_by_id(id_acesso_permitido)
 
         if not acessoPermitido:
             return {'message':'esta solicitacao_acesso não existe'}, NOT_FOUND_REQUEST
@@ -75,8 +72,8 @@ class RecrsAcessoPermitido(Resource):
 
 class RecrsListaAcessoPermitido(Resource):
     
-    END_POINT = 'acessos_permitidos'
-    URL = '/acessos_permitidos'
+    ENDPOINT = 'acessos_permitidos'
+    ROUTE = '/acessos_permitidos'
     
     @token_required
     def get(self, current_user):

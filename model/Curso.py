@@ -13,19 +13,26 @@ class CursoModel(db.Model):
     data_fundacao = db.Column(db.Date, nullable=True)
     
     campus_id_campus = db.Column(db.Integer, db.ForeignKey('campus.id_campus'), nullable=False)
-    campus = db.relationship('CampusModel', backref=db.backref('cursos', lazy=True))
+    campus = db.relationship('CampusModel', lazy='select', uselist=False, backref=db.backref('cursos', lazy='select'))
     
-    docentes = db.relationship('DocenteModel', backref=db.backref('curso', lazy=True))
+    docentes = db.relationship('DocenteModel', backref=db.backref('curso', uselist=False, lazy='select'))
     
-    disciplinas = db.relationship('DisciplinaModel', backref=db.backref('curso', lazy=True))
+    disciplinas = db.relationship('DisciplinaModel', backref=db.backref('curso', uselist=False, lazy='select'))
 
-    discentes = db.relationship('DiscenteModel', backref=db.backref('curso', lazy=True))
+    discentes = db.relationship('DiscenteModel', backref=db.backref('curso', uselist=False, lazy='select'))
 
     def __init__(self, nome, data_fundacao, campus_id_campus, id_curso=None):
         self.nome = nome
         self.data_fundacao = data_fundacao
         self.campus_id_campus = campus_id_campus
         self.id_curso = id_curso
+
+    def serialize(self):
+        return{
+            'id_curso':self.id_curso,
+            'nome':self.nome,
+            'data_fundacao':self.data_fundacao
+        }
 
     def __repr__(self):
         return '<curso %r>' % self.nome

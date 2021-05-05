@@ -30,7 +30,7 @@ If the Python are not installed or the version is incorrect, you need to make an
 
 2. Remember to looking for 3.7.x version, where x is the latest version:
 
-3. download the installer of 64 bits `Windows installer(64-bit)`.
+3. download the installer of 64 bits **Windows installer(64-bit)**.
 
 4. Run the installer.
 
@@ -116,7 +116,7 @@ Endpoints available:
 ###### Exemples
 You can access the webservice routes by adding the server adress and the route that you need to access.
 
-e.g : `http://localhost:5000/users` access the users resource into webservice.
+e.g : _http://localhost:5000/users_ access the users resource into webservice.
 
 Some exemples of consuming this *webservice* is found [here](/exemple) 
 

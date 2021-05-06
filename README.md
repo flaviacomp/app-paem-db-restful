@@ -118,11 +118,12 @@ Endpoints available:
 ###### Exemples
 You can access the webservice routes by adding the server adress and the route that you need to access.
 
-* Using browser to access to login
-GET resquest
+* Using browser to access to login.
+
+GET resquest:
 >_http://localhost:5000/login?login=teste_docente&senha=teste_
 
-respponse
+Response:
 ```json
 {
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiZXhwIjoxNjIwMzE1ODA2fQ.HYbJi6CqAxoho5bu00E464lfkXMuWixzl6CT8yz8PO4"

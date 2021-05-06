@@ -106,8 +106,10 @@ Is the file [main app](/main.py). Thus, it's ready to make request to the server
 ###### Routes
 This webservice is in development. So, there's just some Routes available for now and *it's Routes can be changed* in the future.
 Endpoints available:
-* **/auth/token** : Use to *login in API*. You have to get a token to access the other endpoints of this API. You can just use **GET** method to request the token by send a json into the body of request with user and password for this endpoits.
+* **/login** : Use to *login in API*. You have to get a token to access the other endpoints of this API. You can just use **GET** method to request the token by send a json into the body of request with user and password for this endpoits.
 * **/users** : Use to see the users recorded into the database. just **GET** method is available to request this endpoint.
+* **/discentes/discente** : Use to **see** a especific discente. You just can use **GET** method and you must put a param named **maticula** with matricula number of discente to make the respective usages.
+* **/discentes** : Use to **see** a all discentes recorded in database. You just can use **GET** method for now of discente to make the respective usages.
 * **/solicitacoes_acessos** : Use to see the values into the *solicitacao_cesso* table. You can use just **GET** method to make resquest to server.
 * **/solicitacoes_acessos/solicitacao_acesso** : Use to **see**, **create**, **update** and **delete** a especific solicitacao_acesso. You can use **GET**, **POST**, **PUT** and **DELETE** methods to make the respective usages.
 * **/acessos_permitidos** : Use to **see** the values into the table *acesso_permitido* recorded into the database. You can just use the 'GET' method to access this route.
@@ -117,6 +119,20 @@ Endpoints available:
 You can access the webservice routes by adding the server adress and the route that you need to access.
 
 >e.g : _http://localhost:5000/users_ access the users resource into webservice.
+
+```python
+# request all discentes recorded into database. 
+import requests
+
+# change TOKEN to valide token
+headers = {"Authorization":f"Bearer TOKEN"}
+
+res = requests.get("http://localhost:5000/discentes", headers=headers)
+
+print("status_code: ",res.status_code)
+print("text: ", res.text)
+
+```
 
 >Some exemples of consuming this *webservice* is found [here](/exemple) 
 

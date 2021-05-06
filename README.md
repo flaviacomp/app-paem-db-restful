@@ -118,8 +118,18 @@ Endpoints available:
 ###### Exemples
 You can access the webservice routes by adding the server adress and the route that you need to access.
 
->e.g : _http://localhost:5000/discentes_ access the discentes recoded into database.
+* Using browser to access to login
+GET resquest
+>_http://localhost:5000/login?login=teste_docente&senha=teste_
 
+respponse
+```json
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiZXhwIjoxNjIwMzE1ODA2fQ.HYbJi6CqAxoho5bu00E464lfkXMuWixzl6CT8yz8PO4"
+}
+```
+
+* Using python
 ```python
 # request all discentes recorded into database. 
 import requests

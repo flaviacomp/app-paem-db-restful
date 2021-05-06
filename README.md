@@ -118,7 +118,7 @@ Endpoints available:
 ###### Exemples
 You can access the webservice routes by adding the server adress and the route that you need to access.
 
->e.g : _http://localhost:5000/users_ access the users resource into webservice.
+>e.g : _http://localhost:5000/discentes_ access the users resource into webservice.
 
 ```python
 # request all discentes recorded into database. 

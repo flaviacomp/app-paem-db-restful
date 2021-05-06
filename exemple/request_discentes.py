@@ -1,5 +1,5 @@
+# request all discentes recorded into database. 
 import requests
-
 
 # change TOKEN to valide token
 headers = {"Authorization":f"Bearer TOKEN", "Content-Type": "application/json"}

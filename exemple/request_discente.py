@@ -1,8 +1,8 @@
+# request a discente in data base by matricula param.
 import requests
-import json
 
 # change TOKEN to valide token
-headers = {"Authorization":f"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywiZXhwIjoxNjIwMjYxMDUyfQ.H33J6liTg6aMFcejVDcmmqRhgRUX7MnG1EK6OfsI0ZA"}
+headers = {"Authorization":f"Bearer TOKEN"}
 payload = {"matricula":"2019013473"}
 
 res = requests.get("http://localhost:5000/discentes/discente", params=payload, headers=headers)

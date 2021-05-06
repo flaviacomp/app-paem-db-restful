@@ -1,3 +1,5 @@
+# Request token and then gte request users list
+
 import requests
 
 payload = {"login":"teste_docente", "senha":"teste"}

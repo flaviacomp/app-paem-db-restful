@@ -131,6 +131,8 @@ Response:
 ```
 
 * Using python
+
+GET resquest:
 ```python
 # request all discentes recorded into database. 
 import requests
@@ -143,6 +145,39 @@ res = requests.get("http://localhost:5000/discentes", headers=headers)
 print("status_code: ",res.status_code)
 print("text: ", res.text)
 
+```
+Response:
+```json
+status_code:  200
+
+text:  [
+    {
+        "id_usuario": 1,
+        "login": "admin",
+        "email": "admin@teste.com",
+        "tipo": 0
+    },
+    {
+        "id_usuario": 2,
+        "login": "teste_tecnico",
+        "email": "tecnico@teste.com",
+        "tipo": 1
+    },
+    ...
+    ,
+    {
+        "id_usuario": 6,
+        "login": "teste_discente_3",
+        "email": "discente3@teste.com",
+        "tipo": 3
+    },
+    {
+        "id_usuario": 7,
+        "login": "teste_portaria",
+        "email": "portaria@teste.com",
+        "tipo": 4
+    }
+]
 ```
 
 >Some exemples of consuming this *webservice* is found [here](/exemple) 

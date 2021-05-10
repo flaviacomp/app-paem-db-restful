@@ -1,8 +1,0 @@
-login;senha;email;tipo;siape
-admin;teste;admin@teste.com;ADMIN;300
-teste_tecnico;teste;tecnico@teste.com;TÉCNICO;150
-teste_docente;teste;docente@teste.com;DOCENTE;
-teste_discente_1;teste;discente1@teste.com;DISCENTE;
-teste_discente_2;teste;discente2@teste.com;DISCENTE;
-teste_discente_3;teste;discente3@teste.com;DISCENTE;
-teste_portaria;teste;portaria@teste.com;PORTARIA;

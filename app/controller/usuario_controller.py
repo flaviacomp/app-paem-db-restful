@@ -1,8 +1,9 @@
 from .auhorization import verify_password
-from ..model import UsuarioModel, app
+from ..model import UsuarioModel
 from ..util import BAD_REQUEST, OK
 from .base_controller import BaseController
 
+from flask_restful import current_app
 from datetime import timedelta, datetime
 import jwt
 
@@ -27,26 +28,26 @@ class UsuarioController(BaseController):
             "exp": datetime.utcnow()+timedelta(minutes=60)
         }
 
-        token = jwt.encode(payload, app.secret_key, algorithm='HS256')
+        token = jwt.encode(payload, current_app.secret_key, algorithm='HS256')
 
         return {'token':token}
 
     @classmethod
     def get(cls, id):
-        return super().get_by_id(id, UsuarioModel)
+        return cls.get_by_id(id, UsuarioModel)
 
     @classmethod
-    def post(self, body):
+    def post(cls, body):
         return super().post(body, UsuarioModel)
 
     @classmethod
-    def put(self, body):
+    def put(cls, body):
         return super().put(body)
     
     @classmethod
-    def delete(self, id):
+    def delete(cls, id):
         return super().delete(id, UsuarioModel)
     
     @classmethod
     def get_list(cls):
-        return super().list_get(UsuarioModel)
+        return super().get_list(UsuarioModel)

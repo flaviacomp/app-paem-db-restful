@@ -4,21 +4,24 @@ from .base_controller import BaseController
 class SolicitacaoAcessoController(BaseController):
     
     @classmethod
-    def get(self, id):
+    def get(cls, id):
         return super().get_by_id(id, SolicitacaoAcessoModel)
 
+    def get_id_discente(cls, id_discente):
+        return SolicitacaoAcessoModel.find_by_id_discente(id_discente)
+
     @classmethod
-    def post(self, body):
+    def post(cls, body):
         return super().post(body, SolicitacaoAcessoModel)
 
     @classmethod
-    def put(self, body):
+    def put(cls, body):
         return super().put(body, SolicitacaoAcessoModel)
 
     @classmethod
-    def delete(self, id):
+    def delete(cls, id):
         return super().delete(id, SolicitacaoAcessoModel)
 
     @classmethod
-    def get_list(self):
+    def get_list(cls):
         return super().get_list(SolicitacaoAcessoModel)

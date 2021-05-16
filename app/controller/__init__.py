@@ -1,7 +1,7 @@
 from .usuario_controller import UsuarioController
 from .discente_controller import DiscenteController
 from .docente_controller import DocenteController
-from .tecnico_controller import TecnicoModel
+from .tecnico_controller import TecnicoController
 from .portaria_controller import PortariaController
 from .direcao_controller import DirecaoController
 from .coordenacao_controller import CoordenacaoController
@@ -11,3 +11,5 @@ from .reserva_recurso_servidores_controller import ReservaRecursoServidoresContr
 from .solicitacao_acesso_controller import SolicitacaoAcessoController
 from .acesso_permitido_controller import AcessoPermitidoController
 from .recurso_campus_controller import RecursoCampusController
+
+from ..model import api

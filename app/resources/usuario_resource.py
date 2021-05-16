@@ -2,12 +2,14 @@
 from ..controller import UsuarioController
 from ..controller.auhorization import token_required
 from ..util import BAD_REQUEST, FORBIDDEN_REQUEST, NOT_FOUND_REQUEST, OK
-from flask_restful import Resource, reqparse, request
 from ..controller import UsuarioController
+
+from flask_restful import Resource, reqparse, request
+
 
 class UsuarioResource(Resource):
     ENDPOINT = 'usuario'
-    ROUTE = '/usuario'
+    ROUTE = '/usuarios/usuario'
 
     # @token_required
     def get(self):
@@ -63,7 +65,7 @@ class AuthorizationToken(Resource):
 class ListaUsuarioResource(Resource):
 
     ENDPOINT = 'users'
-    ROUTE = '/users'
+    ROUTE = '/usuarios'
 
     # @token_required
     def get(self):

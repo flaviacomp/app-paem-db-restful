@@ -1,5 +1,5 @@
 from ..database import db
-from .model_base import BaseModel
+from .base_model import BaseModel
 
 from passlib.apps import custom_app_context as pwd_context
 

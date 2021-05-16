@@ -1,4 +1,4 @@
-from ..model import api
+from ..controller import api
 api.prefix = '/api.paem'
 
 from .usuario_resource import UsuarioResource, ListaUsuarioResource, AuthorizationToken
@@ -13,3 +13,4 @@ from .campus_resource import CampusResource, ListaCampusResource
 from .solicitacao_acesso_resource import SolicitacaoAcessoResource, ListaSolicitacaoAcessoResource
 from .acesso_permitido_resource import AcessoPermitidoResource, ListaAcessoPermitidoResource
 from .recurso_campus_resource import RecursoCampusResource, ListaRecursoCampusResource
+from .reserva_recurso_servidor_resource import ReservaRecursoServidorResource, ListaReservaRecursoServidorResource

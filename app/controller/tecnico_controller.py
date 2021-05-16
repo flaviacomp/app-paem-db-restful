@@ -1,19 +1,24 @@
 from ..model import TecnicoModel
+from .base_controller import BaseController
 
-
-class TecnicoController:
+class TecnicoController(BaseController):
     
-    def get(self):
-        pass
+    @classmethod
+    def get(cls, id_tecnico):
+        return super().get_by_id(id_tecnico, TecnicoModel)
 
-    def post(self):
-        pass
+    @classmethod
+    def post(cls, body):
+        return super().post(body)
 
-    def put(self):
-        pass
+    @classmethod
+    def put(cls, body):
+        return super().put(body, TecnicoModel)
 
-    def delete(self):
-        pass
+    @classmethod
+    def delete(cls, id_tecnico):
+        return super().delete(id_tecnico)
 
-    def get_list(self):
-        pass
+    @classmethod
+    def get_list(cls):
+        return super().get_list(TecnicoModel)

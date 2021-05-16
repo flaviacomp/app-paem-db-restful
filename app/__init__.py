@@ -1,4 +1,3 @@
-
 from .resources import api
 from .resources import UsuarioResource, ListaUsuarioResource, AuthorizationToken
 from .resources import DocenteResource, ListaDocenteResource

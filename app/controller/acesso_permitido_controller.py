@@ -4,21 +4,21 @@ from .base_controller import BaseController
 class AcessoPermitidoController(BaseController):
     
     @classmethod
-    def get(self, id):
-        super().get_by_id(id, AcessoPermitidoModel)
+    def get(cls, id):
+        return super().get_by_id(id, AcessoPermitidoModel)
 
     @classmethod
-    def post(self, body):
-        super().post(body, AcessoPermitidoModel)
+    def post(cls, body):
+        return super().post(body, AcessoPermitidoModel)
 
     @classmethod
-    def put(self, body):
-        super().put(body, AcessoPermitidoModel)
+    def put(cls, body):
+        return super().put(body, AcessoPermitidoModel)
 
     @classmethod
-    def delete(self, id):
-        super().delete(id,AcessoPermitidoModel)
+    def delete(cls, id):
+        return super().delete(id,AcessoPermitidoModel)
     
     @classmethod
-    def get_list(self):
-        super().get_list(AcessoPermitidoModel)
+    def get_list(cls):
+        return super().get_list(AcessoPermitidoModel)

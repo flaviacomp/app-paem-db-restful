@@ -1,12 +1,12 @@
+from .base_controller import BaseController
 from ..model import DiscenteModel
-from ..model import CursoModel
 from ..util import OK, CREATED, BAD_REQUEST, NOT_FOUND_REQUEST
 
 
-class DiscenteController:
+class DiscenteController(BaseController):
     
     @classmethod
-    def get(cls, matricula):
+    def get_by_matricula(cls, matricula):
 
         discente = DiscenteModel.find_by_matricula(matricula)
         if not discente:
@@ -15,53 +15,21 @@ class DiscenteController:
         return discente.serialize(), OK
 
     @classmethod
-    def post(cls, discente_dict):
-
-        if not discente_dict:
-            return {"message":"Not found body data with discente."}, BAD_REQUEST
-      
-        matricula = discente_dict.get("matricula")
-
-        discente = DiscenteModel.find_by_matricula(matricula)
-        if discente:
-            DiscenteModel.update_by_matricula(matricula, discente_dict)
-            return {"message":"Discente updated"}, OK
-
-        print(discente_dict)
-        new_discente = DiscenteModel(**discente_dict)
-        new_discente.save_to_db()
-
-        return {"message":"Discente added"}, CREATED
+    def get(cls, id):
+        return super().get_by_id(id, DiscenteModel)
 
     @classmethod
-    def put(cls, discente_dict):
-
-        if not discente_dict:
-            return {"message":"Not found body data with discente."}, BAD_REQUEST
-        
-        matricula = discente_dict.get("matricula")
-
-        discente = DiscenteModel.find_by_matricula(matricula)
-        if not discente:
-            return {"message":"No found id_discente."}, BAD_REQUEST
-
-        DiscenteModel.update_by_matricula(matricula, discente_dict)
-        
-        return {"message":"Discente updated"}, OK
+    def post(cls, body):
+        return super().post(body, DiscenteModel)
 
     @classmethod
-    def delete(cls, matricula):
-        
-        discente = DiscenteModel.find_by_matricula(matricula)
-        
-        if not discente:
-            return {"message":"Can't delete, not found this discente."}, BAD_REQUEST
-        
-        discente.delete_from_db()
+    def put(cls, body):
+        return super().put(body, DiscenteModel)
 
-        return {"message":f"discente {discente.nome} deleted."}, OK
+    @classmethod
+    def delete(cls, id_discente):
+        return super().delete(id_discente, DiscenteModel)
 
     @classmethod
     def list(cls):
-        discentes = DiscenteModel.query_all()
-        return [discente.serialize() for discente in discentes]
+        return super().get_list(DiscenteModel)

@@ -1,5 +1,6 @@
 from ..model import DirecaoModel
 
+
 class DirecaoController:
     
     def get(self):

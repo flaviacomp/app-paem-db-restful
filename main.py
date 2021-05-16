@@ -27,14 +27,17 @@ if __name__=='__main__':
     adicionar_recurso(UsuarioResource)
     adicionar_recurso(ListaUsuarioResource)
 
-    adicionar_recurso(SolicitacaoAcessoResource)
-    adicionar_recurso(ListaSolicitacaoAcessoResource)
+    adicionar_recurso(TecnicoResource)
+    adicionar_recurso(ListaTecnicoResource)
 
-    adicionar_recurso(AcessoPermitidoResource)
-    adicionar_recurso(ListaAcessoPermitidoResource)
+    # adicionar_recurso(SolicitacaoAcessoResource)
+    # adicionar_recurso(ListaSolicitacaoAcessoResource)
 
-    adicionar_recurso(DiscenteResource)
-    adicionar_recurso(ListaDiscenteResource)
+    # adicionar_recurso(AcessoPermitidoResource)
+    # adicionar_recurso(ListaAcessoPermitidoResource)
+
+    # adicionar_recurso(DiscenteResource)
+    # adicionar_recurso(ListaDiscenteResource)
     
 
     api.app.run(debug=True)

@@ -23,15 +23,17 @@ class TecnicoModel(BaseModel, db.Model):
     campus = db.relationship('CampusModel', lazy='select', backref=db.backref('tecnicos', lazy='select'))
 
     def __init__(self, siape, 
-                        nome, 
-                        data_nascimento, 
-                        cargo,
-                        status_covid=None, 
-                        status_afastamento=None, 
-                        usuario_id_usuario=None, 
-                        campus_id_campus=None
-                        ):
-                        
+            nome, 
+            data_nascimento, 
+            cargo,
+            status_covid=None, 
+            status_afastamento=None, 
+            usuario_id_usuario=None, 
+            campus_id_campus=None,
+            id_tecnico=None
+                                ):
+        
+        self.id_tecnico = id_tecnico
         self.siape = siape
         self.nome = nome
         self.data_nascimento = data_nascimento

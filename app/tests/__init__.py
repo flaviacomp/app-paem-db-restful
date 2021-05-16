@@ -3,3 +3,4 @@ from .test_discente import run_test_discente
 from .test_solicitacao_acesso import run_test_solicitacao_acesso
 from .test_acesso_permitido import run_test_acesso_permitido
 from .test_tecnico import run_test_tecnico
+from .test_recurso_campus import run_test_recurso_campus

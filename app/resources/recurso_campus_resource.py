@@ -17,7 +17,7 @@ class RecursoCampusResource(Resource):
 
     def post(self):
         body = request.json
-        return RecursoCampusController.post()
+        return RecursoCampusController.post(body)
       
     def put(self):
       body = request.json
@@ -25,7 +25,7 @@ class RecursoCampusResource(Resource):
 
     def delete(self):
       parser = reqparse.RequestParser()
-      parser.add_argument('id_recruso_campus', type=int, required=True, help='Required query string id_recurso_campus.')
+      parser.add_argument('id_recurso_campus', type=int, required=True, help='Required query string id_recurso_campus.')
 
       args = parser.parse_args()
       id_recurso_campus = args.get('id_recurso_campus')

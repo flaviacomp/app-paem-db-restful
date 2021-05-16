@@ -17,12 +17,12 @@ class AcessoPermitidoModel(BaseModel, db.Model):
       solicita_acesso = db.relationship('SolicitacaoAcessoModel', uselist=False, lazy='select', backref=db.backref('acesso_permitido', lazy='select', uselist=False))
     
       def __init__(self,
-                    id_acesso_permitido,
                     temperatura,
                     hora_entrada,
                     hora_saida,
-                    solicitacao_acesso_id_solicitacao_acesso
-                                         ):
+                    solicitacao_acesso_id_solicitacao_acesso,
+                    id_acesso_permitido=None
+                                            ):
           self.id_acesso_permitido = id_acesso_permitido
           self.temperatura = temperatura
           self.hora_entrada = hora_entrada

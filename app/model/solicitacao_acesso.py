@@ -32,7 +32,6 @@ class SolicitacaoAcessoModel(BaseModel, db.Model):
       recurso_campus = db.relationship('RecursoCampusModel', uselist=False, lazy='select', backref=db.backref('solicitacoes_acesso', lazy='dynamic'))
       
       def __init__(self, 
-                   id_solicitacao_acesso,
                    para_si,
                    data,
                    hora_inicio,
@@ -42,8 +41,9 @@ class SolicitacaoAcessoModel(BaseModel, db.Model):
                    fone,
                    usuario_id_usuario,
                    discente_id_discente,
-                   recurso_campus_id_recurso_campus
-                                    ):
+                   recurso_campus_id_recurso_campus,
+                   id_solicitacao_acesso=None
+                                                ):
 
           self.id_solicitacao_acesso = id_solicitacao_acesso
           self.para_si = para_si

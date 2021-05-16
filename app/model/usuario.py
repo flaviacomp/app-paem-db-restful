@@ -14,11 +14,12 @@ class UsuarioModel(BaseModel, db.Model):
     tipo = db.Column(db.Integer, nullable=False)
 
     
-    def __init__(self, login, senha, email, tipo):
+    def __init__(self, login, senha, email, tipo, id_usuario=None):
         self.login = login
         self.email = email
         self.tipo = tipo
         self.senha = senha
+        self.id_usuario = id_usuario
 
     @property
     def senha(self):

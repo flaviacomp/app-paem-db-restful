@@ -18,14 +18,14 @@ class RecursoCampusModel(PessoaModel, db.Model):
     campus = db.relationship('CampusModel', backref=db.backref('recursos_campus', lazy=True))
     
     def __init__(self,
-            id_recurso_campus,
             nome,
             capacidade,
             descricao,
             inicio_horario_funcionamento,
             fim_horario_funcionamento,
-            campus_id_campus
-                            ):
+            campus_id_campus,
+            id_recurso_campus=None
+                                    ):
         
         self.id_recurso_campus = id_recurso_campus
         self.nome = nome
@@ -73,7 +73,7 @@ class RecursoCampusModel(PessoaModel, db.Model):
     def fim_horario_funcionamento(self, fim_horario_funcionamento):
         
         if isinstance(fim_horario_funcionamento, str):
-            hour_fim, minute_fim, sec_fim = fim_horario_funcionamento.split('-')
+            hour_fim, minute_fim, sec_fim = fim_horario_funcionamento.split(':')
             self.__fim_horario_funcionamento = time(
                 hour=int(hour_fim),
                 minute=int(minute_fim),

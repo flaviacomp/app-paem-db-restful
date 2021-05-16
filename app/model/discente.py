@@ -34,9 +34,11 @@ class DiscenteModel(PessoaModel, db.Model):
                         grupo_risco=None, 
                         status_covid=None, 
                         status_permissao=None, 
-                        usuario_id_usuario=None
+                        usuario_id_usuario=None,
+                        id_discente=None
                         ):
 
+        self.id_discente = id_discente
         self.matricula = matricula
         self.nome = nome
         self.cpf = cpf

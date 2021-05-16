@@ -1,6 +1,6 @@
 from .base_controller import BaseController
 from ..model import DiscenteModel
-from ..util import OK, CREATED, BAD_REQUEST, NOT_FOUND_REQUEST
+from ..util.http_status_code import OK, CREATED, BAD_REQUEST, NOT_FOUND_REQUEST
 
 
 class DiscenteController(BaseController):

@@ -1,6 +1,5 @@
-from ..util import NOT_FOUND_REQUEST, BAD_REQUEST, FORBIDDEN_REQUEST, CREATED, OK
+from ..util.http_status_code import NOT_FOUND_REQUEST, BAD_REQUEST, FORBIDDEN_REQUEST, CREATED, OK
 from ..controller import SolicitacaoAcessoController
-from ..controller.auhorization import token_required
 
 from flask_restful import Resource, reqparse, request
 

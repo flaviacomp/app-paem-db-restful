@@ -1,7 +1,6 @@
-from ..controller import api
-api.prefix = '/api.paem'
-
-from .usuario_resource import UsuarioResource, ListaUsuarioResource, AuthorizationToken
+from ..controller import app
+from .authorization_resource import AuthorizationResource
+from .usuario_resource import UsuarioResource, ListaUsuarioResource
 from .docente_resource import DocenteResource, ListaDocenteResource
 from .discente_resource import DiscenteResource, ListaDiscenteResource
 from .tecnico_resource import TecnicoResource, ListaTecnicoResource

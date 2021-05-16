@@ -1,6 +1,5 @@
 from ..controller import AcessoPermitidoController
-from ..controller.auhorization import token_required
-from ..util import NOT_FOUND_REQUEST, BAD_REQUEST, CREATED, OK
+from ..util.http_status_code import NOT_FOUND_REQUEST, BAD_REQUEST, CREATED, OK
 
 from flask_restful import Resource, request, reqparse
 from datetime import time

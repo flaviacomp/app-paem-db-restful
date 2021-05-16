@@ -1,4 +1,4 @@
-from ..util import OK, CREATED, BAD_REQUEST, NOT_FOUND_REQUEST
+from ..util.http_status_code import OK, CREATED, BAD_REQUEST, NOT_FOUND_REQUEST
 
 
 class BaseController:

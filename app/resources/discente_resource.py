@@ -1,4 +1,3 @@
-from ..controller.auhorization import token_required
 from ..controller import DiscenteController
 
 from flask_restful import Resource, reqparse, request

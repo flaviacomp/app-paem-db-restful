@@ -1,6 +1,6 @@
-
 from app import api
-from app import UsuarioResource, ListaUsuarioResource, AuthorizationToken
+from app import AuthorizationResource
+from app import UsuarioResource, ListaUsuarioResource
 from app import DocenteResource, ListaDocenteResource
 from app import DiscenteResource, ListaDiscenteResource
 from app import TecnicoResource, ListaTecnicoResource
@@ -13,9 +13,6 @@ from app import SolicitacaoAcessoResource, ListaSolicitacaoAcessoResource
 from app import AcessoPermitidoResource, ListaAcessoPermitidoResource
 from app import RecursoCampusResource, ListaRecursoCampusResource
 
-from getpass import getpass
-
-
 
 def adicionar_recurso(Recurso):
     api.add_resource(Recurso, Recurso.ROUTE, endpoint=Recurso.ENDPOINT)
@@ -23,7 +20,8 @@ def adicionar_recurso(Recurso):
 if __name__=='__main__':
 
     # Login and get token
-    adicionar_recurso(AuthorizationToken)
+    adicionar_recurso(AuthorizationResource)
+
     adicionar_recurso(UsuarioResource)
     adicionar_recurso(ListaUsuarioResource)
 
@@ -38,6 +36,9 @@ if __name__=='__main__':
 
     adicionar_recurso(DiscenteResource)
     adicionar_recurso(ListaDiscenteResource)
+
+    adicionar_recurso(RecursoCampusResource)
+    adicionar_recurso(ListaRecursoCampusResource)
     
 
     api.app.run(debug=True)

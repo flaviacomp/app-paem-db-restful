@@ -1,7 +1,5 @@
-# resource usuario
 from ..controller import UsuarioController
-from ..controller.auhorization import token_required
-from ..util import BAD_REQUEST, FORBIDDEN_REQUEST, NOT_FOUND_REQUEST, OK
+from ..util.http_status_code import BAD_REQUEST, FORBIDDEN_REQUEST, NOT_FOUND_REQUEST, OK
 from ..controller import UsuarioController
 
 from flask_restful import Resource, reqparse, request
@@ -42,25 +40,6 @@ class UsuarioResource(Resource):
         id_usuario = args.get('id_usuario')
 
         return UsuarioController.delete(id_usuario)
-
-class AuthorizationToken(Resource):
-    
-    ENDPOINT = 'login'
-    ROUTE = '/login'
-    
-    def __init__(self):
-        self.__parser = reqparse.RequestParser()
-        self.__parser.add_argument('login', required=True, type=str, help="Parametro login não encontrado na requisição.")
-        self.__parser.add_argument('senha', required=True, type=str, help="Parametro senha não encontrado na requisição.")
-        self.__parser.add_argument('cpf', type=str, help="Parametro cpf não encontrado na requisição.")
-
-    def get(self):
-        
-        args = self.__parser.parse_args()
-        login = args.get("login")
-        senha = args.get("senha")
-
-        return UsuarioController.get_token(login, senha)
 
 class ListaUsuarioResource(Resource):
 

@@ -1,5 +1,4 @@
 from ..controller import TecnicoController
-from ..controller.auhorization import token_required
 from flask_restful import Resource, reqparse, request
 
 class TecnicoResource(Resource):

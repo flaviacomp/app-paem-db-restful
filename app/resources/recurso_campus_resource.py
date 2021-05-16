@@ -1,14 +1,42 @@
-# resource usuario
 from flask_restful import Resource, reqparse, request
-from ..model import RecursoCampusModel
+from ..controller import RecursoCampusController
 
 
 class RecursoCampusResource(Resource):
-    def get(self, id_recurso_campus):
-      myrecurso = RecursoCampusModel.find_by_id(id_recurso_campus)
-      return myrecurso.json()
-    
+
+    ENDPOINT = 'recurso_campus'
+    ROUTE = '/recursos_campus/recurso_campus'
+
+    def get(self):
+      parser = reqparse.RequestParser()
+      parser.add_argument('id_recurso_campus', type=int, required=True, help='Required query string id_recurso.')
+      
+      args = parser.parse_args()
+      id_recurso_campus = args.get('id_recurso_campus')
+      return RecursoCampusController.get(id_recurso_campus)
+
+    def post(self):
+        body = request.json
+        return RecursoCampusController.post()
+      
+    def put(self):
+      body = request.json
+      return RecursoCampusController.put(body)
+
+    def delete(self):
+      parser = reqparse.RequestParser()
+      parser.add_argument('id_recruso_campus', type=int, required=True, help='Required query string id_recurso_campus.')
+
+      args = parser.parse_args()
+      id_recurso_campus = args.get('id_recurso_campus')
+
+      return RecursoCampusController.delete(id_recurso_campus)
+
+
 class ListaRecursoCampusResource(Resource):
-      def get(self):
-        myrecursos = RecursoCampusModel.query_all()
-        return [recurso.json() for recurso in myrecursos]
+
+    ENDPOINT = 'recursos_campus'
+    ROUTE = '/recursos_campus'
+
+    def get(self):
+        return RecursoCampusController.get_list()

@@ -1,19 +1,25 @@
+from .base_controller import BaseController
 from ..model import RecursoCampusModel
 
 
-class RecursoCampusController:
+class RecursoCampusController(BaseController):
     
-    def get(self):
-        pass
+    @classmethod
+    def get(cls, id_recurso_campus):
+        return super().get_by_id(id_recurso_campus, RecursoCampusModel)
 
-    def post(self):
-        pass
+    @classmethod
+    def post(cls, body):
+        return super().post(body, RecursoCampusModel)
 
-    def put(self):
-        pass
+    @classmethod
+    def put(cls, body):
+        return super().put(body, RecursoCampusModel)
 
-    def delete(self):
-        pass
+    @classmethod
+    def delete(cls, id_recurso_campus):
+        return super().delete(id_recurso_campus, RecursoCampusModel)
 
-    def get_list(self):
-        pass
+    @classmethod
+    def get_list(cls):
+        return super().get_list(RecursoCampusModel)

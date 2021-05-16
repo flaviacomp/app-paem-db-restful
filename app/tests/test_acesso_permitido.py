@@ -15,7 +15,7 @@ def run_test_acesso_permitido():
         'temperatura':33.6,
         'hora_entrada':'10:30:38',
         'hora_saida':'11:20:00',
-        'id_solicitacao_acesso':4
+        'solicitacao_acesso_id_solicitacao_acesso':4
     }
 
     body_put = { 
@@ -23,7 +23,7 @@ def run_test_acesso_permitido():
         'temperatura':36.6,
         'hora_entrada':'11:30:38',
         'hora_saida':'12:20:00',
-        'id_solicitacao_acesso':4
+        'solicitacao_acesso_id_solicitacao_acesso':4
     }
 
     payload["id_acesso_permitido"] = BaseTest.post(URL, body_post)

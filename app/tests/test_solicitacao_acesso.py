@@ -23,7 +23,7 @@ def run_test_solicitacao_acesso():
         'fone':'(91)983878675',
         'usuario_id_usuario':5,
         'discente_id_discente':2,
-        'id_recurso_campus':6
+        'recurso_campus_id_recurso_campus':6
     }
 
 
@@ -38,13 +38,13 @@ def run_test_solicitacao_acesso():
         'fone':'(91)983878675',
         'usuario_id_usuario':5,
         'discente_id_discente':2,
-        'id_recurso_campus':6
+        'recurso_campus_id_recurso_campus':6
     }
 
     payload["id_solicitacao_acesso"] = BaseTest.post(URL, body_post)
-
     BaseTest.put(URL, body_put)
 
+    print('payload: ', payload)
     BaseTest.get(URL, payload)
 
     BaseTest.delete(URL, payload)

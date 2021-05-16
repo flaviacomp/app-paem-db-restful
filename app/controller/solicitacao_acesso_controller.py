@@ -7,6 +7,7 @@ class SolicitacaoAcessoController(BaseController):
     def get(cls, id):
         return super().get_by_id(id, SolicitacaoAcessoModel)
 
+    @classmethod
     def get_id_discente(cls, id_discente):
         return SolicitacaoAcessoModel.find_by_id_discente(id_discente)
 

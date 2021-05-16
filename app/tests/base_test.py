@@ -3,16 +3,21 @@ import requests
 
 class BaseTest:
 
-    URL_BASE = "http://localhost:5000/api.paem{route}"
+    
 
     @classmethod
     def get_url(cls, route):
-        cls.URL_BASE.format(route)
+        url = f"http://localhost:5000/api.paem{route}"
+        return url
 
     @classmethod
     def post(self, url, body):
 
         post = input("\ntesting POST request ?(yes-y/nop-n) ")
+        
+        if post=="n" or post=="nop":
+            print("Abort TEST PUT")
+            return
 
         resp_post = requests.post(
             url=url, 
@@ -24,8 +29,8 @@ class BaseTest:
         print("headers: ", resp_post.headers)
         print("json: ", resp_post.json())
 
-        id = list(filter(lambda k: 'id_' in k, resp_post.json().keys()))
-        resp_post.json().get(id)
+        id_key = list(filter(lambda k: 'id_' in k, resp_post.json().keys()))[0]
+        id = resp_post.json().get(id_key)
         return id
 
     @classmethod
@@ -35,6 +40,7 @@ class BaseTest:
 
         if put=="n" or put=="nop":
             print("Abort TEST PUT")
+            return
 
         resp_post = requests.put(
             url=url, 
@@ -53,7 +59,8 @@ class BaseTest:
 
         if get=="n" or get=="nop":
             print("Abort TEST GET")
-        
+            return
+            
         resp_get = requests.get(
             url=url,
             params=params

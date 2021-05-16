@@ -13,21 +13,21 @@ class AcessoPermitidoModel(BaseModel, db.Model):
       __hora_entrada = db.Column('hora_entrada', db.Time, nullable=True)
       __hora_saida = db.Column('hora_saida', db.Time, nullable=True)
     
-      id_solicitacao_acesso = db.Column(db.Integer, db.ForeignKey('solicitacao_acesso.id_solicitacao_acesso'), nullable=True)
-      solicita_acesso = db.relationship('SolicitacaoAcessoModel', uselist=False, backref=db.backref('acesso_permitido', lazy='select', uselist=False))
+      solicitacao_acesso_id_solicitacao_acesso = db.Column(db.Integer, db.ForeignKey('solicitacao_acesso.id_solicitacao_acesso'), nullable=True)
+      solicita_acesso = db.relationship('SolicitacaoAcessoModel', uselist=False, lazy='select', backref=db.backref('acesso_permitido', lazy='select', uselist=False))
     
       def __init__(self,
                     id_acesso_permitido,
                     temperatura,
                     hora_entrada,
                     hora_saida,
-                    id_solicitacao_acesso
+                    solicitacao_acesso_id_solicitacao_acesso
                                          ):
           self.id_acesso_permitido = id_acesso_permitido
           self.temperatura = temperatura
           self.hora_entrada = hora_entrada
           self.hora_saida = hora_saida
-          self.id_solicitacao_acesso = id_solicitacao_acesso
+          self.solicitacao_acesso_id_solicitacao_acesso = solicitacao_acesso_id_solicitacao_acesso
 
       @property
       def hora_entrada(self):
@@ -60,12 +60,8 @@ class AcessoPermitidoModel(BaseModel, db.Model):
               'temperatura':self.temperatura,
               'hora_entrada':self.hora_entrada,
               'hora_saida':self.hora_saida,
-              'id_solicitacao_acesso':self.id_solicitacao_acesso
+              'solicitacao_acesso_id_solicitacao_acesso':self.solicitacao_acesso_id_solicitacao_acesso
           }
-      
-      @classmethod
-      def find_by_id_solicitacao_acesso(cls, id):
-          return cls.query.filter_by(id_solicitacao_acesso=id).first()
 
       def __repr__(self):
           return '<acesso_permitido %r>' % self.nome

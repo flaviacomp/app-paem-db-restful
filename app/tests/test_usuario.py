@@ -14,36 +14,23 @@ def run_test_usuario():
     payload = {}
 
     body_post = { 
-            "matricula": "11111111111",
-            "nome": "Test Discente 1",
-            "curso_id_curso":2,
-            "cpf":"22222222222",
-            "entrada":"2021",
-            "semestre":1,
-            "endereco":"endereço teste",
-            "grupo_risco":0,
-            "status_covid":0,
-            "status_permissao":1,
-            "usuario_id_usuario":5
+            "login": "foo3",
+            "email": "foo3@test.com",
+            "senha":"foo3",
+            "tipo":2,
         }
 
     body_put ={ 
-        "matricula": "11111111111",
-        "nome": "Test Discente 2",
-        "curso_id_curso":3,
-        "cpf":"22222222222",
-        "entrada":"2021",
-        "semestre":1,
-        "endereco":"endereço teste Updated",
-        "grupo_risco":0,
-        "status_covid":0,
-        "status_permissao":1,
-        "usuario_id_usuario":5
+        "login": "bar",
+        "email": "bar@test.com",
+        "senha":"bar",
+        "tipo":2,
     }
 
 
     payload['id_usuario'] = BaseTest.post(URL, body_post)
-
+    body_put['id_usuario'] = payload['id_usuario']
+    payload['id_usuario'] = 16
     BaseTest.put(URL, body_put)
 
     BaseTest.get(URL, payload)

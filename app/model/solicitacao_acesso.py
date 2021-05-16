@@ -28,7 +28,7 @@ class SolicitacaoAcessoModel(BaseModel, db.Model):
 
       # TODO: add visitante.
 
-      id_recurso_campus = db.Column(db.Integer, db.ForeignKey('recurso_campus.id_recurso_campus'), nullable=True)
+      recurso_campus_id_recurso_campus = db.Column(db.Integer, db.ForeignKey('recurso_campus.id_recurso_campus'), nullable=True)
       recurso_campus = db.relationship('RecursoCampusModel', uselist=False, lazy='select', backref=db.backref('solicitacoes_acesso', lazy='dynamic'))
       
       def __init__(self, 
@@ -42,7 +42,7 @@ class SolicitacaoAcessoModel(BaseModel, db.Model):
                    fone,
                    usuario_id_usuario,
                    discente_id_discente,
-                   id_recurso_campus
+                   recurso_campus_id_recurso_campus
                                     ):
 
           self.id_solicitacao_acesso = id_solicitacao_acesso
@@ -55,7 +55,7 @@ class SolicitacaoAcessoModel(BaseModel, db.Model):
           self.fone = fone
           self.usuario_id_usuario = usuario_id_usuario
           self.discente_id_discente = discente_id_discente
-          self.id_recurso_campus = id_recurso_campus
+          self.recurso_campus_id_recurso_campus = recurso_campus_id_recurso_campus
 
       @property
       def data(self):
@@ -107,12 +107,14 @@ class SolicitacaoAcessoModel(BaseModel, db.Model):
               'matricula':self.discente.serialize()['matricula'],
               'nome_discente':self.discente.serialize()['nome'],
               'discente_id_discente':self.discente_id_discente,
+              'recurso_campus_id_recurso_campus':self.recurso_campus_id_recurso_campus,
               'recurso_campus':self.recurso_campus.serialize()
-          }     
+          }
 
       @classmethod
       def find_by_id_discente(cls, id_discente):
-        return cls.query.filter_by(discente_id_discente=id_discente).first_or_404("Not found this resource.")
+        solicitacao_acesso = cls.query.filter_by(discente_id_discente=id_discente).first_or_404("Not found this resource.")
+        return solicitacao_acesso.serialize()
 
       def __repr__(self):
           return '<solicita_acesso %r>' % self.id_solicitacao_acesso

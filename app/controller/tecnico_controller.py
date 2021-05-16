@@ -9,7 +9,7 @@ class TecnicoController(BaseController):
 
     @classmethod
     def post(cls, body):
-        return super().post(body)
+        return super().post(body, TecnicoModel)
 
     @classmethod
     def put(cls, body):
@@ -17,7 +17,7 @@ class TecnicoController(BaseController):
 
     @classmethod
     def delete(cls, id_tecnico):
-        return super().delete(id_tecnico)
+        return super().delete(id_tecnico, TecnicoModel)
 
     @classmethod
     def get_list(cls):

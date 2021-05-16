@@ -3,7 +3,7 @@ from .base_test import BaseTest
 from ..resources import DiscenteResource
 
 
-def run_test_discente(self):
+def run_test_discente():
     
     #teste route to solicitacao_acesso
     tag = input("\nTesting discente route type enter to continue:")

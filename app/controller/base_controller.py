@@ -22,7 +22,7 @@ class BaseController:
         new_model = Model(**body)
         new_model.save_to_db()
 
-        return {"message":"Added"}, CREATED
+        return new_model.serialize(), CREATED
 
     @classmethod
     def put(cls, body, Model):
@@ -30,7 +30,7 @@ class BaseController:
         if not body:
             return {"message":"Not found body data"}, BAD_REQUEST
         
-        id_key = list(filter(lambda k:'id_' in k, body.keys()))
+        id_key = list(filter(lambda k:'id_' in k, body.keys()))[0]
         id = body.get(id_key)
 
         model = Model.find_by_id(id)

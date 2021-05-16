@@ -1,8 +1,10 @@
 from ..database import db
 from .usuario import UsuarioModel
-from .curso import CursoModel
+from .campus import CampusModel
 from .base_model import BaseModel
 from datetime import date
+
+
 class TecnicoModel(BaseModel, db.Model):
     __tablename__ = "tecnico"
 
@@ -15,10 +17,10 @@ class TecnicoModel(BaseModel, db.Model):
     status_afastamento = db.Column(db.SmallInteger, nullable=True)
 
     usuario_id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.id_usuario'), nullable=True)
-    usuario = db.relationship('UsuarioModel', uselist=False, backref=db.backref('tecnico', lazy=True))
+    usuario = db.relationship('UsuarioModel', lazy='select', uselist=False, backref=db.backref('tecnico', lazy='select'))
 
-    curso_id_curso = db.Column(db.Integer, db.ForeignKey('curso.id_curso'), nullable=True)
-    curso = db.relationship('CursoModel', backref=db.backref('tecnicos', lazy=True))
+    campus_id_campus = db.Column(db.Integer, db.ForeignKey('campus.id_campus'), nullable=True)
+    campus = db.relationship('CampusModel', lazy='select', backref=db.backref('tecnicos', lazy='select'))
 
     def __init__(self, siape, 
                         nome, 
@@ -27,7 +29,7 @@ class TecnicoModel(BaseModel, db.Model):
                         status_covid=None, 
                         status_afastamento=None, 
                         usuario_id_usuario=None, 
-                        curso_id_curso=None
+                        campus_id_campus=None
                         ):
                         
         self.siape = siape
@@ -36,7 +38,7 @@ class TecnicoModel(BaseModel, db.Model):
         self.cargo = cargo
         self.status_covid = status_covid
         self.status_afastamento = status_afastamento
-        self.curso_id_curso = curso_id_curso
+        self.curso_id_curso = campus_id_campus
         self.usuario_id_usuario = usuario_id_usuario
 
     @property
@@ -61,7 +63,7 @@ class TecnicoModel(BaseModel, db.Model):
             'status_covid':self.status_covid, 
             'status_afastamento':self.status_afastamento, 
             'usuario_id_usuario':self.usuario_id_usuario, 
-            'curso_id_curso':self.curso_id_curso
+            'campus_id_campus':self.campus_id_campus
         }
     
     def __repr__(self):

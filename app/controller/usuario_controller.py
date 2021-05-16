@@ -42,7 +42,7 @@ class UsuarioController(BaseController):
 
     @classmethod
     def put(cls, body):
-        return super().put(body)
+        return super().put(body, UsuarioModel)
     
     @classmethod
     def delete(cls, id):

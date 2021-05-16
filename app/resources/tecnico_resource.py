@@ -1,10 +1,11 @@
 from ..controller import TecnicoController
+from ..controller.auhorization import token_required
 from flask_restful import Resource, reqparse, request
 
 class TecnicoResource(Resource):
     
     ENDPOINT = 'tecnico'
-    ROUTE = '/tenicos/tecnico'
+    ROUTE = '/tecnicos/tecnico'
 
     def get(self):
         parser = reqparse.RequestParser()
@@ -27,8 +28,11 @@ class TecnicoResource(Resource):
         
         parser = reqparse.RequestParser()
         parser.add_argument('id_tecnico', type=int, required=True, help="Required query string id_tecnico")
+        
+        args = parser.parse_args()
+        id_tecnico = args.get('id_tecnico')
 
-        return TecnicoController.delete(TecnicoController)
+        return TecnicoController.delete(id_tecnico)
 
 class ListaTecnicoResource(Resource):
     

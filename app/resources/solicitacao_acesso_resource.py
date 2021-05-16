@@ -6,7 +6,7 @@ from flask_restful import Resource, reqparse, request
 
 class SolicitacaoAcessoResource(Resource):
     
-    ENDPOINT = 'solicitacao_acesso'
+    ENDPOINT = 'solicitacaos_acessos'
     ROUTE = '/solicitacoes_acessos/solicitacao_acesso'
 
     # @token_required
@@ -51,7 +51,7 @@ class SolicitacaoAcessoResource(Resource):
 
 class ListaSolicitacaoAcessoResource(Resource):
     
-    ENDPOINT = 'solicitacoes_acessos'
+    ENDPOINT = 'solicitacoes_acesso'
     ROUTE = '/solicitacoes_acessos'
     
     # @token_required

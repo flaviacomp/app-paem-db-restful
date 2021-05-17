@@ -98,7 +98,7 @@ You should **ALWAYS** commit using just the command `git commit`.
 
 #### Users
 ###### Getting starter
-Considering usage in devoloping enviroment, you first need to create a database run the script [create and import database](/create_import_db.py) 
+First of all, considering usage in devoloping enviroment, you need to change the [database connections file](/app/database/connection.json) create a database run the script [create and import database](/create_import_db.py) 
 by run `python create_import_db.py`. That create a database structure and import some data
 test from csv files that there're into this repository. Then run the webserice by the command `python main_app.py` into this repository. 
 Is the file [main app](/main.py). Thus, it's ready to make request to the server. By default the route server **http://localhost:5000** 
@@ -113,7 +113,7 @@ Endpoints available:
 * **/solicitacoes_acessos** : Use to see the values into the *solicitacao_cesso* table. You can use just **GET** method to make resquest to server.
 * **/solicitacoes_acessos/solicitacao_acesso** : Use to **see**, **create**, **update** and **delete** a especific solicitacao_acesso. You can use **GET**, **POST**, **PUT** and **DELETE** methods to make the respective usages.
 * **/acessos_permitidos** : Use to **see** the values into the table *acesso_permitido* recorded into the database. You can just use the 'GET' method to access this route.
-* **/acessos_permitidos/acesso_permitido** : Use to **see**, **create**, **update** and **delete** a especific acesso_permitido into the table *acesso_permitido* recorded into the database. You can use **GET**, **POST**, **PUT** and **DELETE** methods to make the respective usages.
+* **/acessos_permitidos/acesso_permitido** : Use to **see**, **create**, **update** and **delete** a especific _acesso_permitido_ into the table _acesso_permitido_ recorded into the database. You can use **GET**, **POST**, **PUT** and **DELETE** methods to make the respective usages.
 
 ###### Exemples
 You can access the webservice routes by adding the server adress and the route that you need to access.

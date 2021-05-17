@@ -121,7 +121,7 @@ You can access the webservice routes by adding the server adress and the route t
 * Using browser to access to login.
 
 GET resquest:
->_http://localhost:5000/login?login=teste_docente&senha=teste_
+>_http://localhost:5000/api.paem/login?login=teste_docente&senha=teste_
 
 Response:
 ```json

@@ -101,19 +101,24 @@ You should **ALWAYS** commit using just the command `git commit`.
 First of all, considering usage in devoloping enviroment, you need to change the [database connections file](/app/database/connection.json) create a database run the script [create and import database](/create_import_db.py) 
 by run `python create_import_db.py`. That create a database structure and import some data
 test from csv files that there're into this repository. Then run the webserice by the command `python main_app.py` into this repository. 
-Is the file [main app](/main.py). Thus, it's ready to make request to the server. By default the route server **http://localhost:5000** 
+Is the file [main app](/main.py). Thus, it's ready to make request to the server. By default the route server **http://localhost:5000/api.paem** 
 
 ###### Routes
 This webservice is in development. So, there's just some Routes available for now and *it's Routes can be changed* in the future.
 Endpoints available:
-* **/login** : Use to *login in API*. You have to get a token to access the other endpoints of this API. You can just use **GET** method to request the token by send a json into the body of request with user and password for this endpoits.
-* **/users** : Use to see the users recorded into the database. just **GET** method is available to request this endpoint.
-* **/discentes/discente** : Use to **see** a especific discente. You just can use **GET** method and you must put a param named **maticula** with matricula number of discente to make the respective usages.
+* **/login** : Use to *login in API*. You have to get a token to access the other endpoints of this API. You can just use **GET** method to request the token by send a json into the body of request _sasic authentrication_ by parsing **user** and **password**.
+* **/usuarios** : Use to see the users recorded into the database. just **GET** method is available to request this endpoint.
+* **/usuarios/usuario** : Use to **see**, **create** and **delete** a especific _usuario_. You can use **GET**, **POST** and **DELETE** methods by parsing _id_discente_ as a query string.
+* **/discentes/discente** : Use to **see** a especific discente. You just can use **GET** method and you must put a param named **maticula** with matricula number of discente to make the respective usages. Also use to **create** and **delete** a especific discente. You can use **GET**, **POST** and **DELETE** methods by parsing _id_discente_ as a query string.
 * **/discentes** : Use to **see** a all discentes recorded in database. You just can use **GET** method for now of discente to make the respective usages.
 * **/solicitacoes_acessos** : Use to see the values into the *solicitacao_cesso* table. You can use just **GET** method to make resquest to server.
-* **/solicitacoes_acessos/solicitacao_acesso** : Use to **see**, **create**, **update** and **delete** a especific solicitacao_acesso. You can use **GET**, **POST**, **PUT** and **DELETE** methods to make the respective usages.
-* **/acessos_permitidos** : Use to **see** the values into the table *acesso_permitido* recorded into the database. You can just use the 'GET' method to access this route.
-* **/acessos_permitidos/acesso_permitido** : Use to **see**, **create**, **update** and **delete** a especific _acesso_permitido_ into the table _acesso_permitido_ recorded into the database. You can use **GET**, **POST**, **PUT** and **DELETE** methods to make the respective usages.
+* **/solicitacoes_acessos/solicitacao_acesso** : Use to **see**, **create**, **update** and **delete** a especific solicitacao_acesso. You can use **GET**, **POST**, **PUT** and **DELETE** methods by parsing _id_solicitacao_acesso_ as a query string.
+* **/acessos_permitidos** : Use to **see** the values into the table *acesso_permitido* recorded into the database. You can just use the **GET** method to access this route.
+* **/acessos_permitidos/acesso_permitido** : Use to **see**, **create**, **update** and **delete** a especific _acesso_permitido_ into the table _acesso_permitido_ recorded into the database. You can use **GET**, **POST**, **PUT** and **DELETE** methods by parsing _id_acesso_permitido_ as a query string.
+* **/tecnicos/tecnico** : Use to **see**, **create** and **delete** a especific _tecnico_. You can use **GET**, **POST** and **DELETE** methods by parsing _id_tecnico_ as a query string.
+* **/tecnicos** : Use to **see** the values into the table _tecnico_ recorded into the database. You can just use the **GET** method to access this route.
+* **/recursos_campus/recurso_campus** : Use to **see**, **create** and **delete** a especific _recurso_campus_. You can use **GET**, **POST** and **DELETE** methods by parsing _id_tecnico_ as a query string.
+* **/recursos_campus** : Use to **see** the values into the table _recurso_campus_ recorded into the database. You can just use the **GET** method to access this route.
 
 ###### Exemples
 You can access the webservice routes by adding the server adress and the route that you need to access.
@@ -121,7 +126,7 @@ You can access the webservice routes by adding the server adress and the route t
 * Using browser to access to login.
 
 GET resquest:
->_http://localhost:5000/api.paem/login?login=teste_docente&senha=teste_
+>_http://localhost:5000/api.paem/login_ and parsing basic authentication
 
 Response:
 ```json
@@ -140,7 +145,7 @@ import requests
 # change TOKEN to valide token
 headers = {"Authorization":f"Bearer TOKEN"}
 
-res = requests.get("http://localhost:5000/discentes", headers=headers)
+res = requests.get("http://localhost:5000/api.paem/discentes", headers=headers)
 
 print("status_code: ",res.status_code)
 print("text: ", res.text)

@@ -1,26 +1,44 @@
-from app import api, app
-from resources.recrs_usuario import RecrsUsuario, RecrsListaUsuario
-from resources.recrs_solicitacao_acesso import RecrsSolicitacaoAcesso, RecrsListaSolicitacaoAcesso
-from resources.recrs_acesso_permitido import RecrsAcessoPermitido, RecrsListaAcessoPermitido
-from resources.recrs_discente import RecrsDiscente, RecrsListaDiscente
+from app import api
+from app import AuthorizationResource
+from app import UsuarioResource, ListaUsuarioResource
+from app import DocenteResource, ListaDocenteResource
+from app import DiscenteResource, ListaDiscenteResource
+from app import TecnicoResource, ListaTecnicoResource
+from app import DirecaoResource, ListaDirecaoResource
+from app import CoordenacaoResource, ListaCoordenacaoResource
+from app import CursoResource, ListaCursoResource
+from app import DisciplinaResource, ListaDisciplinaResource
+from app import CampusResource, ListaCampusResource
+from app import SolicitacaoAcessoResource, ListaSolicitacaoAcessoResource
+from app import AcessoPermitidoResource, ListaAcessoPermitidoResource
+from app import RecursoCampusResource, ListaRecursoCampusResource
+
 
 def adicionar_recurso(Recurso):
     api.add_resource(Recurso, Recurso.ROUTE, endpoint=Recurso.ENDPOINT)
 
 if __name__=='__main__':
-    
+
     # Login and get token
-    adicionar_recurso(RecrsUsuario)
-    adicionar_recurso(RecrsListaUsuario)
+    adicionar_recurso(AuthorizationResource)
 
-    adicionar_recurso(RecrsSolicitacaoAcesso)
-    adicionar_recurso(RecrsListaSolicitacaoAcesso)
+    adicionar_recurso(UsuarioResource)
+    adicionar_recurso(ListaUsuarioResource)
 
-    adicionar_recurso(RecrsAcessoPermitido)
-    adicionar_recurso(RecrsListaAcessoPermitido)
+    adicionar_recurso(TecnicoResource)
+    adicionar_recurso(ListaTecnicoResource)
 
-    adicionar_recurso(RecrsDiscente)
-    adicionar_recurso(RecrsListaDiscente)
+    adicionar_recurso(SolicitacaoAcessoResource)
+    adicionar_recurso(ListaSolicitacaoAcessoResource)
+
+    adicionar_recurso(AcessoPermitidoResource)
+    adicionar_recurso(ListaAcessoPermitidoResource)
+
+    adicionar_recurso(DiscenteResource)
+    adicionar_recurso(ListaDiscenteResource)
+
+    adicionar_recurso(RecursoCampusResource)
+    adicionar_recurso(ListaRecursoCampusResource)
     
 
-    app.run(debug=True)
+    api.app.run(debug=True)

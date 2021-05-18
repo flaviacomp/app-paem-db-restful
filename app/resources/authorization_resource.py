@@ -68,7 +68,7 @@ class Authorization():
     def get_token(cls, login):
         
         payload = {
-            "login": usuario,
+            "login": login,
             "exp": datetime.utcnow()+timedelta(minutes=60)
         }
 

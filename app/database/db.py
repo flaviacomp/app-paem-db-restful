@@ -14,7 +14,7 @@ with open('app/database/connection.json', 'r') as file:
 # get AQLAlchemy
 db = SQLAlchemy(app=app)
 
-__str_connection = "mysql://{username}:{password}@{server}/{database}"
+__str_connection = "mysql://{username}:{password}@{server}/{database}?charset=utf8mb4"
 
 __username = __conn_json["username"]
 __password = __conn_json["password"]

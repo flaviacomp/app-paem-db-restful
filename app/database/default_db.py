@@ -1,5 +1,3 @@
-
-from util.seguranca import Seguranca
 import pandas as pd
 from mysql import connector
 from datetime import date, datetime, timedelta

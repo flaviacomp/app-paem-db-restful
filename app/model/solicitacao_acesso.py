@@ -103,7 +103,6 @@ class SolicitacaoAcessoModel(BaseModel, db.Model):
               'status_acesso':self.status_acesso,
               'nome':self.nome,
               'fone':self.fone,
-              'id_recurso_campus':self.id_recurso_campus,
               'matricula':self.discente.serialize()['matricula'],
               'nome_discente':self.discente.serialize()['nome'],
               'discente_id_discente':self.discente_id_discente,

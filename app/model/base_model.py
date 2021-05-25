@@ -15,7 +15,11 @@ class BaseModel():
     
     @classmethod
     def update_by_id(cls, id, dict):
-       cls.query.get(id).update(dict)
+        model = cls.query.get(id)
+        for key, value in dict.items():
+            if hasattr(model, key):
+                setattr(model, key, value)
+        cls.save()
 
     def save_to_db(self):
         db.session.add(self)

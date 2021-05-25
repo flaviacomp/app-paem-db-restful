@@ -30,7 +30,7 @@ def run_test_usuario():
 
     payload['id_usuario'] = BaseTest.post(URL, body_post)
     body_put['id_usuario'] = payload['id_usuario']
-    payload['id_usuario'] = 16
+    
     BaseTest.put(URL, body_put)
 
     BaseTest.get(URL, payload)

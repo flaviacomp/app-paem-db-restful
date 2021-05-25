@@ -53,7 +53,7 @@ class RecursoCampusModel(PessoaModel, db.Model):
         return str(self.__inicio_horario_funcionamento)
     
     @inicio_horario_funcionamento.setter
-    def inicio_horario_funciomaneto(self, inicio_horario_funcionamento):
+    def inicio_horario_funcionamento(self, inicio_horario_funcionamento):
         
         if isinstance(inicio_horario_funcionamento, str):
             hour_inicio, minute_inicio, second_inicio = inicio_horario_funcionamento.split(':')
